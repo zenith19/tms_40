@@ -1,0 +1,16 @@
+<h1><%= t '.all_courses'  %></h1>
+<% @courses.each do |course| %>
+  <%= course.name %>&nbsp;
+  <%= course.description %>&nbsp;
+  <%= course.start_date %>&nbsp;
+  <%= course.end_date %>&nbsp;
+  <% if course.finished %>
+    <%= t '.course_finished'%>
+  <% else %>
+    <%= t '.course_not_finished'%>
+  <% end %>&nbsp;
+  <%= link_to t('update_link'), edit_course_path(course) %>&nbsp;
+  <%= link_to t('delete_link'), course, method: :delete,
+    data: { confirm: t('.course_delete_confirm') } %>
+  <br/>
+<% end %>

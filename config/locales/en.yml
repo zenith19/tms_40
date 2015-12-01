@@ -8,3 +8,30 @@ en:
   log_in: "Log in"
   log_out: "Log out"
   sign_up: "Sign Up Now!"
+  about: About
+  contact: Contact
+  courses:
+    edit:
+      bt_update_new_course: Update a Course
+      edit_course: Edit a Course
+    index:
+      all_courses: List of all Courses
+      course_delete_confirm: Delete this course?
+      course_finished: Finished
+      course_not_finished: Course Available
+    new:
+      bt_create_new_course: Create New Course
+      new_course: Add New Course
+    show:
+      course_delete_confirm: Delete this course?
+      course_finished: Finished
+      course_not_finished: Course Available
+      test: This is a test message
+  delete_link: Delete
+  footer_text: © Framgia Bangladesh 2015
+  home: Home
+  log_in: Log in
+  sign_up: Sign Up Now!
+  system_name: Framgia Training Management System
+  update_link: Update
+  welcome_message: Welcome to

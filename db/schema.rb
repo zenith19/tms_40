@@ -28,9 +28,9 @@ ActiveRecord::Schema.define(version: 20151201040850) do
     t.text     "description", limit: 65535
     t.date     "start_date"
     t.date     "end_date"
-    t.date     "finished"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.boolean  "finished",                  default: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
   end
 
   create_table "courses_subjects", force: :cascade do |t|

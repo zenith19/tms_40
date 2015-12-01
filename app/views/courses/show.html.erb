@@ -1,0 +1,9 @@
+<%= @course.name %>&nbsp;
+<%= @course.description %>&nbsp;
+<%= @course.start_date %>&nbsp;
+<%= @course.end_date %>&nbsp;
+<% if @course.finished %>
+  <%= t '.course_finished' %>
+<% else %>
+  <%= t '.course_not_finished' %>
+<% end%>
