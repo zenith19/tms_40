@@ -63,9 +63,12 @@ ActiveRecord::Schema.define(version: 20151201040850) do
 
   create_table "tasks", force: :cascade do |t|
     t.string   "name",       limit: 255
+    t.integer  "subject_id", limit: 4
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
+
+  add_index "tasks", ["subject_id"], name: "index_tasks_on_subject_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name",             limit: 255
@@ -125,6 +128,7 @@ ActiveRecord::Schema.define(version: 20151201040850) do
   add_foreign_key "courses_subjects", "subjects"
   add_foreign_key "courses_subjects_tasks", "courses_subjects"
   add_foreign_key "courses_subjects_tasks", "tasks"
+  add_foreign_key "tasks", "subjects"
   add_foreign_key "users_courses", "courses"
   add_foreign_key "users_courses", "users"
   add_foreign_key "users_subjects", "subjects"
