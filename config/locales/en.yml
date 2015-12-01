@@ -1,15 +1,33 @@
 en:
-  about: About
-  contact: Contact
-  footer_text: © Framgia Bangladesh 2015
+  welcome_message: "Welcome to"
+  system_name: "Framgia Training Management System"
+  footer_text: "© Framgia Bangladesh 2015"
+  about: "About"
+  contact: "Contact"
+  home: "Home"
+  log_in: "Log in"
+  log_out: "Log out"
+  sign_up: "Sign Up Now!"
+  user_activities: "User activities"
+  users:
+    id: "ID"
+    name: "Name"
+    email: "Email"
+    created: "Created at"
+    updated: "Updated at"
+    join_date: "Join date"
+    start_date: "Start date"
+    participated_courses: "Participated courses"
+    histories_of_courses: "Histories of courses"
+    finished: "Finished"
+    training: "Training"
+  button:
+    hide: "Hide"
+    show: "Show"
   helpers:
     submit:
       create: Create new %{model}
       edit: Update %{model}
-  home: Home
-  log_in: Log in
-  log_out: Log out
-  sign_up: Sign Up Now!
   subjects:
     edit:
       add_more_button: Add a new task
@@ -28,7 +46,5 @@ en:
     task_fields:
       name_placeholder: Task name
       remove_button: Remove a task
-  system_name: Framgia Training Management System
   view_all_supervisors: Supervisors
   view_all_trainee: Trainees
-  welcome_message: Welcome to

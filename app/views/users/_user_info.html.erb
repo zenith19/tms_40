@@ -1,0 +1,27 @@
+<table class="table">
+  <tr>
+    <td><%= @user.full_name %></td>
+  </tr>
+  <tr>
+    <td class="pull-right text-info">
+      <b><%= t "users.email" %> : </b>
+    </td>
+    <td><%= @user.email %></td>
+  </tr>
+  <tr>
+    <td class="pull-right text-info">
+      <b><%= t "users.join_date" %> : </b>
+    </td>
+    <td><%= I18n.localize @user.created_at, format: :long %></td>
+  </tr>
+  <tr>
+    <td class="pull-right text-info">
+      <b><%= t("users.courses_participate") %> : </b>
+    </td>
+    <div class="col-md-4 col-md-offset-2">
+      <% @user.courses.each do |course| %>
+        <td><%= link_to course.name, course_path(course) %></td>
+      <% end %>
+    </div>
+  </tr>
+</table>
