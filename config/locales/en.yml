@@ -8,3 +8,25 @@ en:
   log_in: "Log in"
   log_out: "Log out"
   sign_up: "Sign Up Now!"
+  helpers:
+    submit:
+      create: "Create new %{model}"
+      edit: "Update %{model}"
+  subjects:
+    edit:
+      add_more_button: Add a new task
+      edit: Edit Subject
+    index:
+      create: Create New
+      delete_confirm: Are you sure you want to delete?
+      delete_link: Delete
+      desc: Description
+      edit_link: Edit
+      list: Listing of Subjects
+      name: Name
+    new:
+      add: Add Subject
+      add_more_in_add: Add a new task
+    task_fields:
+      name_placeholder: Task name
+      remove_button: Remove a task
