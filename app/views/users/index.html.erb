@@ -1,0 +1,12 @@
+<table class="table table-striped">
+<%= will_paginate renderer: BootstrapPagination::Rails %></br><hr>
+  <th>Name</th><th>Email</th>
+  <% @users.each do |user| %>
+    <tr>
+      <td> <%= user.first_name %>&nbsp;<%= user.last_name %></td>
+      <td><%= user.email %></td>
+    </tr>
+  <% end %>
+</table>
+</br><hr>
+<%= will_paginate renderer: BootstrapPagination::Rails %>

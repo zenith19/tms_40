@@ -5,9 +5,13 @@
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
-          <li><%= link_to t(:log_out), :destroy_user_session, method: :delete %></li>
+          <% if current_user.supervisor? %>
+            <%= render 'layouts/supervisor' %>
+          <% else %>
+            <%= render 'layouts/trainee' %>
+          <% end %>
         <% else %>
-          <li><%= link_to t(:log_in), new_user_session_path %></li>
+          <%= render 'layouts/unauthenticated' %>
         <% end %>
       </ul>
     </nav>
