@@ -9,4 +9,3 @@ function remove_fields(link) {
   $(link).closest("tr").remove();
   $(link).closest('.field').find("input[type=hidden]").remove();
 }
-

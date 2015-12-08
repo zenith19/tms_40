@@ -5,7 +5,7 @@ class CreateCourses < ActiveRecord::Migration
       t.text :description
       t.date :start_date
       t.date :end_date
-      t.date :finished
+      t.integer :status, limit: 1
 
       t.timestamps null: false
     end
