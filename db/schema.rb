@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20151201040850) do
     t.text     "description", limit: 65535
     t.date     "start_date"
     t.date     "end_date"
-    t.date     "finished"
+    t.integer  "status",      limit: 1
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
   end
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20151201040850) do
   create_table "courses_subjects", force: :cascade do |t|
     t.integer  "course_id",  limit: 4
     t.integer  "subject_id", limit: 4
-    t.date     "deadline"
+    t.integer  "status",     limit: 1
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
   end
@@ -103,14 +103,14 @@ ActiveRecord::Schema.define(version: 20151201040850) do
   add_index "users_courses", ["user_id"], name: "index_users_courses_on_user_id", using: :btree
 
   create_table "users_subjects", force: :cascade do |t|
-    t.integer  "user_id",    limit: 4
-    t.integer  "subject_id", limit: 4
-    t.boolean  "finished"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.integer  "user_id",            limit: 4
+    t.integer  "courses_subject_id", limit: 4
+    t.boolean  "finished",                     default: false
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
   end
 
-  add_index "users_subjects", ["subject_id"], name: "index_users_subjects_on_subject_id", using: :btree
+  add_index "users_subjects", ["courses_subject_id"], name: "index_users_subjects_on_courses_subject_id", using: :btree
   add_index "users_subjects", ["user_id"], name: "index_users_subjects_on_user_id", using: :btree
 
   create_table "users_tasks", force: :cascade do |t|
@@ -131,7 +131,7 @@ ActiveRecord::Schema.define(version: 20151201040850) do
   add_foreign_key "tasks", "subjects"
   add_foreign_key "users_courses", "courses"
   add_foreign_key "users_courses", "users"
-  add_foreign_key "users_subjects", "subjects"
+  add_foreign_key "users_subjects", "courses_subjects"
   add_foreign_key "users_subjects", "users"
   add_foreign_key "users_tasks", "tasks"
   add_foreign_key "users_tasks", "users"

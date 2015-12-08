@@ -3,7 +3,7 @@ class CreateCoursesSubjects < ActiveRecord::Migration
     create_table :courses_subjects do |t|
       t.references :course, index: true, foreign_key: true
       t.references :subject, index: true, foreign_key: true
-      t.date :deadline
+      t.integer :status, limit: 1
 
       t.timestamps null: false
     end
