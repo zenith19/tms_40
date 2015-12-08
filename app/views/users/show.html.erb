@@ -1,0 +1,19 @@
+<% provide :title, @user.full_name %>
+<div class="row">
+  <div class="col-md-8">
+    <%= render "user_info" %>
+  </div>
+  <div class="col-md-4">
+    <h2 class="text-info"><%= t "user_activities" %></h2>
+    <% if @user.activities.any? %>
+      <% @activities.each do |activity| %>
+        <br>
+        <%= I18n.localize activity.created_at, format: :long %>
+        <%= activity.activity_type %>
+        <%= t "user_activities" %>
+        <%= activity.target_id %>
+      <% end %>
+      <%= will_paginate @activities %>
+    <% end %>
+  </div>
+</div>
