@@ -8,4 +8,13 @@ $(document).ready(function() {
       $(this).html("<%= I18n.t 'hide' %>");
     end
   });
+
+  $('#sd').datepicker().on('changeDate', function(event) {
+    var start_date = $("#sd").val();
+    $('#ed').data('datepicker').setStartDate(start_date);
+  });
+  $('#ed').datepicker().on('changeDate', function(event) {
+    var end_date = $("#ed").val();
+    $('#sd').data('datepicker').setEndDate(end_date);
+  });
 });

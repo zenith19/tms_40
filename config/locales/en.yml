@@ -1,7 +1,5 @@
 en:
   about: About
-  hide: Hide
-  show: Show
   button:
     hide: Hide
     show: Show
@@ -11,9 +9,11 @@ en:
     submit:
       create: Create new %{model}
       edit: Update %{model}
+  hide: Hide
   home: Home
   log_in: Log in
   log_out: Log out
+  show: Show
   sign_up: Sign Up Now!
   subjects:
     edit:
@@ -35,6 +35,21 @@ en:
       remove_button: Remove a task
   supervisor:
     courses:
+      course:
+        edit: Edit
+      edit:
+        danger: Cannot edit course now.
+        submit: Update Course
+        title: Edit Course
+      index:
+        action: Action
+        assign_courses: Assigned Courses
+        description: Description
+        end_date: End Date
+        name: Name
+        start_date: Start Date
+        supervisors: Supervisors
+        trainees: Trainees
       show:
         all_subjects: All Subjects
         all_supervisors: All Supervisors

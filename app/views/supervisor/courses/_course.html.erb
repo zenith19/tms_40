@@ -5,4 +5,5 @@
   <td><%= (I18n.localize course.end_date, format: :short) if course.end_date %></td>
   <td><%= course.users.supervisors.count %></td>
   <td><%= course.users.trainees.count %></td>
+  <td><%= link_to t('.edit'), edit_supervisor_course_path(course) %></td>
 </tr>

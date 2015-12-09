@@ -18,5 +18,9 @@ class Course < ActiveRecord::Base
   def supervisors
     User.joins(:courses).
       where("users.supervisor = ? AND courses.id = ?", true, self.id)
-  end  
+  end
+
+  def new?
+    self.status == STATUS.key(0)
+  end
 end
