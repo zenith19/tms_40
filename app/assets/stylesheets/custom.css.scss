@@ -108,6 +108,106 @@ footer {
   }
 }
 
+/* course css */
+
+.courses {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-bottom: 1px solid $gray-lighter;
+  }
+}
+
+select {
+  width: 32.8%;
+}
+
+.panel-box{
+  margin-top: 0px;
+}
+
+.panel-course-name{
+  font-size: 3em;
+}
+
+.panel-course-footer{
+  height: 40px;
+}
+
+.myTasks {
+  width: 20%;
+  margin: 25px;
+  float: left;
+}
+
+.finishCheckbox{
+  width: 10px;
+  margin-right: 6px !important;
+}
+
+.maxDescription {
+  min-height: 72px;
+}
+
+.tasksHeader {
+  font-size: 25px;
+  margin-bottom: -5px !important;
+}
+
+.submitButtonHolder{
+  width: 12em;
+  margin-top: 2em;
+}
+
+.align_checkbox{
+  width: 10px
+}
+
+textarea {
+  height: 15em !important;
+}
+
+.row{
+  padding: 0px 18px;
+}
+
+.fix_margin{
+  margin-top: 10em;
+}
+.box {
+  margin-top: 2em;
+  border:1px solid #D8D8D8;
+  padding: 15px;
+}
+
+.imageFix{
+  margin-bottom: 7em;
+  -webkit-box-shadow: 10px 10px 70px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 10px 10px 70px 0px rgba(0,0,0,0.75);
+  box-shadow: 10px 10px 70px 0px rgba(0,0,0,0.75);
+}
+
+.profile_align{
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.05);
+  padding: 28px;
+  min-height: 160px;
+}
+
+.course{
+  font-weight: bold;
+}
+
+.subject {
+  color:rgb(248, 113, 60);
+}
+
+.btnMinWidth{
+  min-width: 94px;
+}
+
 /*flash*/
 .alert-error {
     background-color: #f2dede;
