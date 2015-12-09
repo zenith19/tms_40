@@ -21,6 +21,10 @@ class Course < ActiveRecord::Base
   end
 
   def new?
-    self.status == STATUS.key(0)
+    self.status == STATUS[:new]
+  end
+
+  def started?
+    self.status == STATUS[:started]
   end
 end

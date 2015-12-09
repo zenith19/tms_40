@@ -1,5 +1,12 @@
 <h1><%= @course.name %></h1>
-<%= link_to t(".start-finish"), "#", class: "btn btn-primary" %>
+<%= form_for [:supervisor, @course] do |f| %>
+  <%= f.hidden_field :update_status %>
+  <% if @course.new? %>
+    <%= f.submit t('.start'), class: "btn btn-primary" %>
+  <% elsif @course.started? %>
+    <%= f.submit t('.finish'), class: "btn btn-primary" %>
+  <% end %>
+<% end %>
 <p><%= @course.description %></p>
 <h3>
   <%= t '.all_trainees' %>
