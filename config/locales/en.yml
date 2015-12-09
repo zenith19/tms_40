@@ -56,6 +56,9 @@ en:
         start_date: Start Date
         supervisors: Supervisors
         trainees: Trainees
+      new:
+        bt_new_course: Create New Course
+        title: Create New Course
       show:
         all_subjects: All Subjects
         all_supervisors: All Supervisors
@@ -80,3 +83,4 @@ en:
   view_all_supervisors: Supervisors
   view_all_trainee: Trainees
   welcome_message: Welcome to
+  flash_course_created: Course Successfully Created
