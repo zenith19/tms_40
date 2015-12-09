@@ -9,6 +9,13 @@ en:
   log_out: "Log out"
   sign_up: "Sign Up Now!"
   user_activities: "User activities"
+  name: "Name"
+  description: "Description"
+  start_date: "Start Date"
+  end_date: "End Date"
+  supervisor: "Supervisors"
+  trainee: "Trainees"
+  assign_courses: "Assigned Courses"
   users:
     id: "ID"
     name: "Name"

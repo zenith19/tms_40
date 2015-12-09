@@ -1,0 +1,16 @@
+<h1><%= t 'assign_courses' %></h1>
+
+<table class="table">
+  <thead>
+    <th><%= t 'name' %></th>
+    <th><%= t 'description' %></th>
+    <th><%= t 'start_date' %></th>
+    <th><%= t 'end_date' %></th>
+    <th><%= t 'supervisor' %></th>
+    <th><%= t 'trainee' %></th>
+  </thead>
+  <tbody>
+    <%= render @courses %>
+    <%= will_paginate %>
+  </tbody>
+</table>

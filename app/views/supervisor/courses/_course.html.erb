@@ -1,0 +1,8 @@
+<tr>
+  <td><%= link_to course.name, [:supervisor, course] %></td>
+  <td><%= course.description.truncate 100 %></td>
+  <td><%= (I18n.localize course.start_date, format: :short) if course.start_date %></td>
+  <td><%= (I18n.localize course.end_date, format: :short) if course.end_date %></td>
+  <td><%= course.users.supervisors.count %></td>
+  <td><%= course.users.trainees.count %></td>
+</tr>
