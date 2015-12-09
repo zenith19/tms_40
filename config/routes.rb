@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  namespace :supervisor do
+    root 'courses#index'
+    resources :courses
+    resources :users, only: [:index]
+  end
+
   devise_for :users, controllers: { registrations: "registrations" }
 
   root             "static_pages#home"
@@ -10,7 +16,4 @@ Rails.application.routes.draw do
   resources :subjects
   resources :users, only: [:index, :show]
 
-  namespace :supervisor do
-    resources :users, only: [:index]
-  end
 end
