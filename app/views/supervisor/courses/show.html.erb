@@ -1,0 +1,42 @@
+<h1><%= @course.name %></h1>
+<%= link_to t(".start-finish"), "#", class: "btn btn-primary" %>
+<p><%= @course.description %></p>
+<h3>
+  <%= t '.all_trainees' %>
+  <small>
+    <%= link_to t(".hide"), "#", class: "btn btn-info btn-hide" %>
+  </small>
+</h3>
+<ol>
+  <% @course.trainees.each do |trainee| %>
+    <li><%= trainee.full_name %></li>
+  <% end %>
+</ol>
+<h3>
+  <%= t '.all_supervisors' %>
+  <small>
+    <%= link_to t(".hide"), "#", class: "btn btn-info btn-hide" %>
+  </small>
+</h3>
+<ol>
+  <% @course.supervisors.each do |supervisor| %>
+    <li><%= supervisor.full_name %></li>
+  <% end %>
+</ol>
+<h3><%= t '.all_subjects' %></h3>
+<ol>
+  <% @course.courses_subjects.each do |courses_subject| %>
+    <div class="row">
+      <li>
+        <div class="col-xs-1">
+          <%= link_to courses_subject.subject.name, 
+            edit_supervisor_course_courses_subject_path(course_id: @course.id, 
+            id: courses_subject.id) %>
+        </div>
+        <div class="col-xs-1">
+          <%= CoursesSubject::STATUS.key(courses_subject.status).upcase %>
+        </div>
+      </li>
+    </div>
+  <% end %>
+</ol>

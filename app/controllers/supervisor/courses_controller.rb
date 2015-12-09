@@ -5,4 +5,8 @@ class Supervisor::CoursesController < ApplicationController
     @courses = current_user.courses.paginate page: params[:page],
       per_page: 10
   end
+
+  def show
+    @course = Course.find params[:id]
+  end
 end

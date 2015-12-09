@@ -1,40 +1,20 @@
 en:
-  welcome_message: "Welcome to"
-  system_name: "Framgia Training Management System"
-  footer_text: "© Framgia Bangladesh 2015"
-  about: "About"
-  contact: "Contact"
-  home: "Home"
-  log_in: "Log in"
-  log_out: "Log out"
-  sign_up: "Sign Up Now!"
-  user_activities: "User activities"
-  name: "Name"
-  description: "Description"
-  start_date: "Start Date"
-  end_date: "End Date"
-  supervisor: "Supervisors"
-  trainee: "Trainees"
-  assign_courses: "Assigned Courses"
-  users:
-    id: "ID"
-    name: "Name"
-    email: "Email"
-    created: "Created at"
-    updated: "Updated at"
-    join_date: "Join date"
-    start_date: "Start date"
-    participated_courses: "Participated courses"
-    histories_of_courses: "Histories of courses"
-    finished: "Finished"
-    training: "Training"
+  about: About
+  hide: Hide
+  show: Show
   button:
-    hide: "Hide"
-    show: "Show"
+    hide: Hide
+    show: Show
+  contact: Contact
+  footer_text: © Framgia Bangladesh 2015
   helpers:
     submit:
       create: Create new %{model}
       edit: Update %{model}
+  home: Home
+  log_in: Log in
+  log_out: Log out
+  sign_up: Sign Up Now!
   subjects:
     edit:
       add_more_button: Add a new task
@@ -53,5 +33,28 @@ en:
     task_fields:
       name_placeholder: Task name
       remove_button: Remove a task
+  supervisor:
+    courses:
+      show:
+        all_subjects: All Subjects
+        all_supervisors: All Supervisors
+        all_trainees: All Trainees
+        hide: Hide
+        start-finish: Start/Finish Course
+  system_name: Framgia Training Management System
+  user_activities: User activities
+  users:
+    created: Created at
+    email: Email
+    finished: Finished
+    histories_of_courses: Histories of courses
+    id: ID
+    join_date: Join date
+    name: Name
+    participated_courses: Participated courses
+    start_date: Start date
+    training: Training
+    updated: Updated at
   view_all_supervisors: Supervisors
   view_all_trainee: Trainees
+  welcome_message: Welcome to
