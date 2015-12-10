@@ -1,6 +1,7 @@
 class Supervisor::CoursesController < ApplicationController
   before_action :authenticate_user!
   before_action :load_course, except: [:index, :new, :create]
+  before_action :check_course, only: [:edit, :update]
 
   def index
     @courses = current_user.courses.paginate page: params[:page], per_page: 10
@@ -23,22 +24,15 @@ class Supervisor::CoursesController < ApplicationController
   def show
   end
 
-  def edit    
-    unless @course.new?
-      @course = Course.find params[:id]
-    else
-      flash[:danger] = t '.danger'
-      redirect_to supervisor_courses_path
-    end    
+  def edit
   end
 
   def update
-    @course.attributes = {'subject_ids' => []}.merge(params[:course] || {})
-    update_status! if params.has_key? :update_status
-    if @course.update_attributes course_params
-      redirect_to supervisor_course_path(@course)
+    if params.has_key? :update_status
+      update_status!
+      update_course start_finish_params
     else
-      render :edit
+      update_course course_params
     end
   end
 
@@ -47,9 +41,13 @@ class Supervisor::CoursesController < ApplicationController
     @course = Course.find params[:id]
   end
 
+  def start_finish_params
+    params.require(:course).permit :update_status
+  end
+
   def course_params
     params.require(:course).permit :name, :description, :start_date, :end_date, 
-      :update_status, 'subject_ids' => []
+      subject_ids: []
   end
 
   def update_status!
@@ -57,6 +55,21 @@ class Supervisor::CoursesController < ApplicationController
       @course.status = Course::STATUS[:started]
     elsif @course.started?
       @course.status = Course::STATUS[:finished]
+    end
+  end
+
+  def check_course
+    if (@course.started? && !params.has_key?(:update_status)) || @course.finished?
+      flash[:danger] = t '.danger'
+      redirect_to supervisor_courses_path
+    end
+  end
+
+  def update_course custom_params
+    if @course.update_attributes custom_params
+      redirect_to supervisor_course_path(@course)
+    else
+      render :edit
     end
   end
 end
