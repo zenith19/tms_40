@@ -1,5 +1,11 @@
 en:
   about: About
+  hide: Hide
+  show: Show
+  finish: "Finish"
+  confirm_message: "You sure?"
+  finished: "Finished"
+  tasks: "Tasks:"
   button:
     hide: Hide
     show: Show
