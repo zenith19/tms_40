@@ -1,10 +1,23 @@
 class Supervisor::CoursesController < ApplicationController
   before_action :authenticate_user!
-  before_action :load_course, except: :index
+  before_action :load_course, except: [:index, :new, :create]
 
   def index
-    @courses = current_user.courses.paginate page: params[:page],
-      per_page: 10
+    @courses = current_user.courses.paginate page: params[:page], per_page: 10
+  end
+
+  def new
+    @course = Course.new
+  end
+
+  def create
+    @course = Course.new course_params
+    if @course.save!
+      flash[:notice] = t 'flash_course_created'
+      redirect_to [:supervisor, @course]
+    else
+      render :new
+    end
   end
 
   def show

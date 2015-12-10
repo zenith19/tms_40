@@ -28,17 +28,17 @@ ActiveRecord::Schema.define(version: 20151201040850) do
     t.text     "description", limit: 65535
     t.date     "start_date"
     t.date     "end_date"
-    t.integer  "status",      limit: 1
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.integer  "status",      limit: 1,     default: 0
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
   end
 
   create_table "courses_subjects", force: :cascade do |t|
     t.integer  "course_id",  limit: 4
     t.integer  "subject_id", limit: 4
-    t.integer  "status",     limit: 1
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.integer  "status",     limit: 1, default: 0
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
   end
 
   add_index "courses_subjects", ["course_id"], name: "index_courses_subjects_on_course_id", using: :btree

@@ -1,8 +1,8 @@
 $(document).ready(function() {
-  $(".btn-hide").click(function(){        
+  $(".btn-hide").click(function(){
     $(this).parent().parent().next().toggleClass('hidden', 2000);
     var btnName = $(this).html();
-    if btnName == "<%= I18n.t 'hide' %>"
+    if (btnName == "<%= I18n.t 'hide' %>")
       $(this).html("<%= I18n.t 'show' %>");
     else
       $(this).html("<%= I18n.t 'hide' %>");
