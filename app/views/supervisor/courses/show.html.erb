@@ -1,10 +1,12 @@
 <h1><%= @course.name %></h1>
 <%= form_for [:supervisor, @course] do |f| %>
   <%= f.hidden_field :update_status %>
-  <% if @course.new? %>
-    <%= f.submit t('.start'), class: "btn btn-primary" %>
-  <% elsif @course.started? %>
-    <%= f.submit t('.finish'), class: "btn btn-primary" %>
+  <% if can? :manage, @course %>
+    <% if @course.new? %>
+      <%= f.submit t(".start"), class: "btn btn-primary" %>
+    <% elsif @course.started? %>
+      <%= f.submit t(".finish"), class: "btn btn-primary" %>
+    <% end %>
   <% end %>
 <% end %>
 <p><%= @course.description %></p>
@@ -36,8 +38,8 @@
     <div class="row">
       <li>
         <div class="col-xs-1">
-          <%= link_to courses_subject.subject.name, 
-            edit_supervisor_course_courses_subject_path(course_id: @course.id, 
+          <%= link_to courses_subject.subject.name,
+            edit_supervisor_course_courses_subject_path(course_id: @course.id,
             id: courses_subject.id) %>
         </div>
         <div class="col-xs-1">

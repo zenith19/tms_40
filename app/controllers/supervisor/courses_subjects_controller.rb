@@ -1,11 +1,12 @@
 class Supervisor::CoursesSubjectsController < ApplicationController
   before_action :load_courses_subject
   before_action :check_courses_subject
+  load_and_authorize_resource :course
 
   def show
-    @course = @course_subject.course
-    @subject = @course_subject.subject
-    @tasks = @course_subject.tasks
+    @course = @courses_subject.course
+    @subject = @courses_subject.subject
+    @tasks = @courses_subject.tasks
   end
 
   def edit
@@ -32,7 +33,7 @@ class Supervisor::CoursesSubjectsController < ApplicationController
   def check_courses_subject
     if @courses_subject.started? || @courses_subject.finished?
       flash[:danger] = t '.danger'
-      redirect_to supervisor_courses_path      
+      redirect_to supervisor_courses_path
     end
   end
 end

@@ -2,6 +2,7 @@ class Supervisor::CoursesController < ApplicationController
   before_action :authenticate_user!
   before_action :load_course, except: [:index, :new, :create]
   before_action :check_course, only: [:edit, :update]
+  load_and_authorize_resource :course
 
   def index
     @courses = current_user.courses.paginate page: params[:page], per_page: 10
@@ -46,8 +47,8 @@ class Supervisor::CoursesController < ApplicationController
   end
 
   def course_params
-    params.require(:course).permit :name, :description, :start_date, :end_date, 
-      subject_ids: []
+    params.require(:course).permit :name, :description, :start_date, :end_date,
+      :update_status, subject_ids: []
   end
 
   def update_status!
