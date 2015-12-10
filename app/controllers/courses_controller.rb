@@ -1,7 +1,8 @@
 class CoursesController < ApplicationController
-  load_and_authorize_resource :course
 
   def show
-    @course = current_user.courses
+    courses = current_user.courses
+    @course = courses.last
+    @subjects = current_user.subjects
   end
 end
