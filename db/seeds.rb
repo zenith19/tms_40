@@ -49,3 +49,24 @@ subjects = Subject.all
   end
   course.save!
 end
+
+# Assign course
+10.times do |uc|
+  uid = "#{uc+1}"
+  UsersCourse.create! user_id: uid,
+                    course_id: 1,
+                    removed: false
+end
+
+5.times do |cs|
+  sid = "#{cs+1}"
+  CoursesSubject.create! subject_id: sid,
+                    course_id: 1
+end
+
+
+5.times do |cst|
+  tid = "#{cst+1}"
+  CoursesSubjectsTask.create! task_id: tid,
+                    courses_subject_id: 1
+end

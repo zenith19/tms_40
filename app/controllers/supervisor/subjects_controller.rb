@@ -3,6 +3,7 @@ class Supervisor::SubjectsController < ApplicationController
   load_and_authorize_resource :course
 
   def index
+    @subjects = Subject.paginate page: params[:page], per_page: 15
   end
 
   def new
