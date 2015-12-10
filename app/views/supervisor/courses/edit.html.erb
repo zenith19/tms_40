@@ -19,12 +19,10 @@
         <%= f.date_field :end_date, class: 'datepicker', id: 'ed', readonly: true %>
       </div>
       <div class="form-group">
-        <% Subject.all.each do |subject| -%>
-          <%= check_box_tag :subject_ids, subject.id, @course.subjects.include?(subject),
-            :name => 'course[subject_ids][]'-%>
-          <%= label_tag :subject_ids, subject.name -%></br>
-      <% end %>
-    </div>
+        <%= collection_check_boxes :course, :subject_ids,Subject.all, :id, :name do |b| %>
+          <%=  b.check_box %> <%=  b.label %></br>
+        <% end %>
+      </div>
     <center><%= f.submit t '.submit', 
         class: "btn btn-primary btn-lg" %></center>
   <% end %>
