@@ -21,6 +21,7 @@ class Supervisor::CoursesController < ApplicationController
 
   def update
     @course.attributes = {'subject_ids' => []}.merge(params[:course] || {})
+    update_status! if params.has_key? :update_status
     if @course.update_attributes course_params
       redirect_to supervisor_course_path(@course)
     else
@@ -35,6 +36,14 @@ class Supervisor::CoursesController < ApplicationController
 
   def course_params
     params.require(:course).permit :name, :description, :start_date, :end_date, 
-      'subject_ids' => []
+      :update_status, 'subject_ids' => []
+  end
+
+  def update_status!
+    if @course.new?
+      @course.status = Course::STATUS[:started]
+    elsif @course.started?
+      @course.status = Course::STATUS[:finished]
+    end
   end
 end
