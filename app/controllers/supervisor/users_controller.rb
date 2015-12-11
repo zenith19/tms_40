@@ -7,4 +7,10 @@ class Supervisor::UsersController < ApplicationController
       @users = User.trainees.paginate page: params[:page], per_page: 15
     end
   end
+
+  def destroy
+    User.find(params[:id]).destroy
+    flash[:success] = t ".delete_confirmation"
+    redirect_to supervisor_users_path
+  end
 end
