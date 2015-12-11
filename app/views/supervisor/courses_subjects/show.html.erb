@@ -6,17 +6,23 @@
       <div class="pull-right">
         <%= link_to t(:back), [:supervisor, @course],
           class: "btn btn-default" %>
-        <% if @course_subject.finished? %>
-          <button class="btn btn-default disabled"><b><%= t 'finished' %></b></button>
+        <% if @course.started? %>
+          <%= form_for [:supervisor, @course, @courses_subject] do |f| %>
+            <%= f.hidden_field :update_status %>
+            <% if @courses_subject.new? %>
+              <%= f.submit t(".start"), class: "btn btn-primary" %>
+            <% elsif @courses_subject.started? %>
+              <%= f.submit t(".finish"), class: "btn btn-primary" %>
+            <% end %>
+          <% end %>
         <% end %>
       </div>
     </div>
     <div class="panel-body">
       <p><%= @subject.description %></p>
       <br>
-      <label class="tasksHeader"><%= t 'tasks' %></label>
+      <label class="tasksHeader"><%= t "tasks" %></label>
       <hr>
-
       <div class="container">
         <% @tasks.each do |task| %>
           <div class="panel panel-success myTasks">

@@ -76,6 +76,10 @@ en:
       edit:
         submit: Update Subject
         title: Edit Subject for %{course_name} Course
+        danger: Cannot edit subjcet now.
+      show:
+        finish: Finish Subject
+        start: Start Subject
   system_name: Framgia Training Management System
   tasks: 'Tasks:'
   user_activities: User activities

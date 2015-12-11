@@ -15,7 +15,7 @@ class Supervisor::CoursesController < ApplicationController
   def create
     @course = Course.new course_params
     if @course.save!
-      flash[:notice] = t 'flash_course_created'
+      flash[:notice] = t "flash_course_created"
       redirect_to [:supervisor, @course]
     else
       render :new
@@ -29,11 +29,15 @@ class Supervisor::CoursesController < ApplicationController
   end
 
   def update
-    if params.has_key? :update_status
+    if course_params.has_key? :update_status
       update_status!
-      update_course start_finish_params
+      redirect_to supervisor_course_path(@course)
     else
-      update_course course_params
+      if @course.update_attributes course_params
+        redirect_to supervisor_course_path(@course)
+      else
+        render :edit
+      end
     end
   end
 
@@ -42,12 +46,8 @@ class Supervisor::CoursesController < ApplicationController
     @course = Course.find params[:id]
   end
 
-  def start_finish_params
-    params.require(:course).permit :update_status
-  end
-
   def course_params
-    params.require(:course).permit :name, :description, :start_date, :end_date,
+    params.require(:course).permit :name, :description, :start_date, :end_date, 
       :update_status, subject_ids: []
   end
 
@@ -57,11 +57,12 @@ class Supervisor::CoursesController < ApplicationController
     elsif @course.started?
       @course.status = Course::STATUS[:finished]
     end
+    @course.save!
   end
 
   def check_course
-    if (@course.started? && !params.has_key?(:update_status)) || @course.finished?
-      flash[:danger] = t '.danger'
+    if (@course.started? && !course_params.has_key?(:update_status)) || @course.finished?
+      flash[:danger] = t ".danger"
       redirect_to supervisor_courses_path
     end
   end
