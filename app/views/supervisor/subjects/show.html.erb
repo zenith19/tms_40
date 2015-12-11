@@ -1,0 +1,17 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h1>
+      <%= @subject.name.camelize %>
+    </h1>
+  </div>
+  <div class="panel-body">
+    <%= @subject.description %>
+  </div>
+  <div class="panel-body">
+    <% @tasks.each do |task| %>
+      <div class="panel-footer">
+        <%= task.name.camelize %>
+      </div>
+    <% end %>
+  </div>
+</div>

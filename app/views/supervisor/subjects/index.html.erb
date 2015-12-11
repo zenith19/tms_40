@@ -12,7 +12,7 @@
     <%= will_paginate renderer: BootstrapPagination::Rails %>
     <% @subjects.each do |subject| %>
       <tr>
-        <td><%= subject.name%></td>
+        <td> <%= link_to "#{subject.name.camelize}", supervisor_subject_path(subject) %></td>
         <td><%= subject.description%></td>
         <td><%= link_to t(".edit_link"), edit_supervisor_subject_path(subject) %></td>
         <td><%= link_to t(".delete_link"), supervisor_subject_path(subject),
