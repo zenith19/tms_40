@@ -1,8 +1,8 @@
-class SubjectsController < ApplicationController
+class Supervisor::SubjectsController < ApplicationController
   before_action :load_subject, only: [:edit, :update, :destroy]
+  load_and_authorize_resource :course
 
   def index
-    @subjects = Subject.all
   end
 
   def new

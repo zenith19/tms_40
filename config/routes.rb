@@ -9,12 +9,12 @@ Rails.application.routes.draw do
 
   resources :subjects
   resources :users, only: [:index, :show]
-  
+
   namespace :supervisor do
     root 'courses#index'
     resources :users, only: :index
-    resources :courses, only: [:new, :create, :destroy, :show] do
-      resources :courses_subjects, only: [:edit, :update]
+    resources :courses, only: [:new, :create, :edit, :destroy, :show] do
+      resources :courses_subjects, only: [:edit, :update, :show]
     end
   end
 end
