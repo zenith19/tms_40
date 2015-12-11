@@ -1,0 +1,18 @@
+<h1><% t ".title", assign_type: @assign_type %></h1>
+<%= form_for @course, url: edit_supervisor_course_users_course_path(assign_type: @assign_type) do |f| %>
+  <table class="table table-striped table-bordered">
+    <thead>
+      <th></th>
+      <th><%= t ".name" %></th>
+    </thead>
+    <tbody>
+    <%= f.collection_check_boxes(:user_ids, @users, :id, :full_name) do |b| %>
+      <tr>
+        <td><%= b.check_box %></td>        
+        <td><%= b.text %></td>
+      </tr>
+      <% end %>      
+    </tbody>
+    </table>  
+  <center><%= f.submit t(".update", assign_type: @assign_type), class: "btn btn-primary" %></center>
+  <% end %>
