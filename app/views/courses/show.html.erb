@@ -1,0 +1,33 @@
+<h1><%= current_user.full_name %></h1><br>  
+<h4><%= t ".course_name" %> <%= @course.name.upcase %></h4><br>
+<h4><%= @course.users.supervisors.count %><%= t ".no_of_supervisors" %></h4>
+<div id="show_hide_supervisor">
+  <table class="table table-striped">
+    <thead>
+      <th><%= t ".supervisor_name" %></th>
+      <th><%= t ".supervisor_email" %></th>
+    </thead>
+    <tbody>
+      <% @course.supervisors.each do |supervisor| %>
+        <tr>
+          <td><%= supervisor.full_name %></td>
+          <td><%= supervisor.email %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <table class="table table-striped">
+    <thead>
+      <th><%= t ".subj_name" %></th>
+      <th><%= t ".subj_desc" %></th>
+    </thead>
+    <tbody>
+      <% @subjects.each do |subject| %>
+        <tr>
+          <td><%= link_to "#{subject.name.camelize}", "#" %></td>
+          <td><%= subject.description %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

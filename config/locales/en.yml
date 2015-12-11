@@ -1,15 +1,21 @@
 en:
   about: About
-  hide: Hide
-  show: Show
-  finish: "Finish"
-  confirm_message: "You sure?"
-  finished: "Finished"
-  tasks: "Tasks:"
   button:
     hide: Hide
     show: Show
+  confirm_message: You sure?
   contact: Contact
+  courses:
+    show:
+      course_name: "Course Name: "
+      no_of_supervisors: " supervisor(s)"
+      subj_desc: Subject Description
+      subj_name: Subject Name
+      supervisor_email: Email
+      supervisor_name: Supervisor Name
+  finish: Finish
+  finished: Finished
+  flash_course_created: Course Successfully Created
   footer_text: © Framgia Bangladesh 2015
   helpers:
     submit:
@@ -69,8 +75,9 @@ en:
     courses_subjects:
       edit:
         submit: Update Subject
-        title: 'Edit Subject for %{course_name} Course'
+        title: Edit Subject for %{course_name} Course
   system_name: Framgia Training Management System
+  tasks: 'Tasks:'
   user_activities: User activities
   users:
     created: Created at
@@ -87,4 +94,3 @@ en:
   view_all_supervisors: Supervisors
   view_all_trainee: Trainees
   welcome_message: Welcome to
-  flash_course_created: Course Successfully Created
