@@ -6,6 +6,11 @@ class Supervisor::SubjectsController < ApplicationController
     @subjects = Subject.paginate page: params[:page], per_page: 15
   end
 
+  def show
+    @subject = Subject.find params[:id]
+    @tasks = @subject.tasks
+  end
+
   def new
     @subject = Subject.new
     @subject.tasks.build
