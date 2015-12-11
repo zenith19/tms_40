@@ -1,0 +1,17 @@
+<div>
+  <h1><%= t ".subj_name" %><%= @courses_subject.subject.name %></h1>
+  <br>
+  <h3><%= t ".subj_desc" %></h3>
+  <p><%= @courses_subject.subject.description %><p>
+  <h3><%= t ".tasks" %></h3>
+  <%= form_for current_user do |f| %>
+    <div class="field form-group">
+      <%= f.label(:title, t ".check" ) %><br>
+      <%= f.collection_check_boxes(:task_ids, @courses_subject.tasks, :id, :name) do |b| %>
+        <%= b.label(class: "checkbox-inline") {b.check_box + b.text} %>
+      <% end %>
+    </div>
+    <center><%= f.submit t(".update"), class: "btn btn-primary" %></center>
+  <% end %>
+</div>
+

@@ -7,12 +7,19 @@ en:
   contact: Contact
   courses:
     show:
-      course_name: "Course Name: "
-      no_of_supervisors: " supervisor(s)"
+      course_name: 'Course Name: '
+      no_of_supervisors: ' supervisor(s)'
       subj_desc: Subject Description
       subj_name: Subject Name
       supervisor_email: Email
       supervisor_name: Supervisor Name
+  courses_subjects:
+    edit:
+      check: 'Check Tasks which you have already finished:'
+      subj_desc: Description
+      subj_name: 'Subject Name: '
+      tasks: 'Tasks: '
+      update: Update
   finish: Finish
   finished: Finished
   flash_course_created: Course Successfully Created
@@ -74,12 +81,27 @@ en:
         start: Start Course
     courses_subjects:
       edit:
+        danger: Cannot edit subjcet now.
         submit: Update Subject
         title: Edit Subject for %{course_name} Course
-        danger: Cannot edit subjcet now.
       show:
         finish: Finish Subject
         start: Start Subject
+    subjects:
+      edit:
+        add_more_button: Add new task
+        edit: Edit Subject
+      index:
+        delete_confirm: Are you sure you want to delete?
+        delete_link: Delete
+        edit_link: Edit
+        list: Listing of Subjects
+      new:
+        add: Add Subject
+        add_more_in_add: Add new task
+      task_fields:
+        name_placeholder: Task Name
+        remove_button: Remove a task
   system_name: Framgia Training Management System
   tasks: 'Tasks:'
   user_activities: User activities
