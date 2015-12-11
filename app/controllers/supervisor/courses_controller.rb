@@ -1,7 +1,7 @@
 class Supervisor::CoursesController < ApplicationController
   before_action :authenticate_user!
   before_action :load_course, except: [:index, :new, :create]
-  before_action :check_course, only: [:edit, :update]
+  before_action :check_course, only: [:edit, :update, :destroy]
   load_and_authorize_resource :course
 
   def index
@@ -41,13 +41,19 @@ class Supervisor::CoursesController < ApplicationController
     end
   end
 
+  def destroy
+    @course.destroy
+    flash[:success] = t ".course_delete"
+    redirect_to supervisor_courses_path
+  end
+
   private
   def load_course
     @course = Course.find params[:id]
   end
 
   def course_params
-    params.require(:course).permit :name, :description, :start_date, :end_date, 
+    params.require(:course).permit :name, :description, :start_date, :end_date,
       :update_status, subject_ids: []
   end
 
@@ -64,14 +70,6 @@ class Supervisor::CoursesController < ApplicationController
     if (@course.started? && !course_params.has_key?(:update_status)) || @course.finished?
       flash[:danger] = t ".danger"
       redirect_to supervisor_courses_path
-    end
-  end
-
-  def update_course custom_params
-    if @course.update_attributes custom_params
-      redirect_to supervisor_course_path(@course)
-    else
-      render :edit
     end
   end
 end
