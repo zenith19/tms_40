@@ -5,6 +5,8 @@ class CoursesSubject < ActiveRecord::Base
     finished: 2
   }
 
+  attr_accessor :update_status
+
   belongs_to :course
   belongs_to :subject
   has_many :users_subjects, dependent: :destroy
