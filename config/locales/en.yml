@@ -9,6 +9,7 @@ en:
     show:
       course_name: 'Course Name: '
       no_of_supervisors: ' supervisor(s)'
+      progress_bars: Progress Bars
       subj_desc: Subject Description
       subj_name: Subject Name
       supervisor_email: Email
