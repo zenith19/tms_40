@@ -17,10 +17,10 @@ class User < ActiveRecord::Base
   has_many :users_tasks, dependent: :destroy
   has_many :tasks, through: :users_tasks
 
-  scope :supervisors, -> { where(supervisor: true) }
-  scope :trainees, -> { where(supervisor: false) }
+  scope :supervisors, -> {where supervisor: true}
+  scope :trainees, -> {where supervisor: false}
 
   def full_name
-    [first_name, last_name].join(" ")
+    [first_name, last_name].join " "
   end
 end

@@ -18,11 +18,8 @@ Rails.application.routes.draw do
     resources :subjects
     resources :courses do
       resources :courses_subjects, only: [:show, :edit, :update]
-      match "/users_courses/edit/:assign_type", to:  "users_courses#update", via: [:patch]
-      match "/users_courses/edit/:assign_type", to:  "users_courses#update", via: [:put]
+      resource :assign_supervisors, only: [:show, :update]
+      resource :assign_trainees, only: [:show, :update]
     end
   end
-  match "/supervisor/courses/:course_id/users_courses/edit/:assign_type",
-    to:  "supervisor/users_courses#edit", as: "edit_supervisor_course_users_course",
-    via: [:get]
 end

@@ -10,10 +10,7 @@ class UsersCourse < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :course
-
-  scope :supervisors, ->{ where supervisor: true }
-  scope :trainees, ->{ where supervisor: false }
-
+  
   def appened_assigned_users
     course.assigned_users << user
   end
