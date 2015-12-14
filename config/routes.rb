@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :update]
   resources :courses, only: [:show]
   resources :courses_subjects
+  resources :users_subjects
 
   namespace :supervisor do
     root "courses#index"
@@ -21,7 +22,7 @@ Rails.application.routes.draw do
       match "/users_courses/edit/:assign_type", to:  "users_courses#update", via: [:put]
     end
   end
-  match "/supervisor/courses/:course_id/users_courses/edit/:assign_type", 
-    to:  "supervisor/users_courses#edit", as: "edit_supervisor_course_users_course", 
+  match "/supervisor/courses/:course_id/users_courses/edit/:assign_type",
+    to:  "supervisor/users_courses#edit", as: "edit_supervisor_course_users_course",
     via: [:get]
 end
