@@ -56,6 +56,7 @@ end
   uid = "#{uc+1}"
   UsersCourse.create! user_id: uid,
                       course_id: 1
+end
 
 5.times do |cs|
   sid = "#{cs+1}"
@@ -75,4 +76,10 @@ end
                    owner_type: "User",
                    trackable_type: "Course",
                    key: "course.update"
+end
+
+10.times do |us|
+  csid = "#{us+1}"
+  UsersSubject.create! user_id: 3,
+                       courses_subject_id: csid
 end

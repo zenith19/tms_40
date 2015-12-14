@@ -8,30 +8,35 @@ en:
     show: Show
   confirm_message: You sure?
   contact: Contact
-  course: "Course:"
+  course: 'Course:'
   courses:
     show:
-      course_name: "Course Name: "
-      no_of_supervisors: " supervisor(s)"
+      course_name: 'Course Name: '
+      finished: Finished
+      no_of_supervisors: ' supervisor(s)'
       progress_bars: Progress Bars
+      show: Show
       subj_desc: Subject Description
       subj_name: Subject Name
       supervisor_email: Email
       supervisor_name: Supervisor Name
+      training: Training
   courses_subjects:
     edit:
       check: "Check Tasks which you have already finished:"
       social_share: Hurray!! I have finished %{subject}. Did you finished it!
       check: "Check Tasks which you have already finished:"
       subj_desc: Description
-      subj_name: "Subject Name: "
-      tasks: "Tasks: "
+      subj_name: 'Subject Name: '
+      tasks: 'Tasks: '
       update: Update
   daily_report_message: The progress of your assigned courses are shown below
   finish: Finish
   finished: Finished
-  flash_assign_supervisors: Sorry! Course has already finished. You cannot assign a supervisor in this course.
-  flash_assign_trainees: Sorry! Course has already started. You cannot assign a trainee in this course.
+  flash_assign_supervisors: Sorry! Course has already finished. You cannot assign
+    a supervisor in this course.
+  flash_assign_trainees: Sorry! Course has already started. You cannot assign a trainee
+    in this course.
   flash_course_created: Course Successfully Created
   footer_text: © Framgia Bangladesh 2015
   helpers:
@@ -43,7 +48,8 @@ en:
   home: Home
   log_in: Log in
   log_out: Log out
-  notify_deadline_message: Deadline of the following course has come very near. Please hurry up.
+  notify_deadline_message: Deadline of the following course has come very near. Please
+    hurry up.
   remove_courses_message: You have been removed to a course.
   search_button: Search
   show: Show
@@ -150,6 +156,11 @@ en:
       subject: "You have been assigned to course: %{course_name}"
     daily_report:
       subject: Daily report about course progress
+  tasks: 'Tasks:'
+  user_activities: User activities
+  user_mailer:
+    assigned_supervisors:
+      subject: "You have been assigned to course: %{course_name}"
     notify_deadline:
       subject: "The deadline of course: %{course_name} is coming very soon"
     removed_supervisors:

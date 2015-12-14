@@ -1,0 +1,13 @@
+$(function() {
+  $('a.btn-show').click(function(event){
+    event.preventDefault();
+    user_subject_id = $(this).attr("rel")
+    $("#" + user_subject_id).toggle();
+    var btnName = $(this).html();
+    if (btnName == "<%= I18n.t 'hide' %>")
+      $(this).html("<%= I18n.t 'show' %>");
+    else
+      $(this).html("<%= I18n.t 'hide' %>");
+    end
+  });
+});

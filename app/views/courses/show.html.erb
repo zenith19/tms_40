@@ -25,19 +25,44 @@
     <th><%= t ".subj_name" %></th>
     <th><%= t ".subj_desc" %></th>
     <th><%= t ".progress_bars" %></th>
+    <th></th>
   </thead>
   <tbody>
-    <% @subjects.each do |subject| %>
+    <% @user_subjects.each do |user_subject| %>
       <tr>
-        <td><%= subject.name.camelize %></td>
-        <td><%= subject.description.truncate 50 %></td>
+        <td><%= link_to "#{user_subject.subject.name.camelize}", "#" %></td>
+        <td><%= user_subject.subject.description.truncate 50 %>
+          <div class="show_hide" id="user_subject_<%= user_subject.id %>">
+            <table>
+              <tbody>
+                <% user_subject.tasks.each do |task| %>
+                  <tr>
+                    <td>
+                      <%= task.name %>
+                    </td>
+                    <td>
+                      <% if !task.users_tasks.find_task_id current_user.id, task.id %>
+                        <%= t ".training" %>
+                      <% else %>
+                        <%= t ".finished" %>
+                      <% end %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </td>
         <td>
-          <% percent = find_subject_progress subject.id %>
+        <% percent = find_subject_progress user_subject.subject.id %>
           <div class="progress">
             <div class="progress-bar" role="progressbar" aria-valuenow="<%= percent %>"
               aria-valuemin="0"  aria-valuemax="100" style="width: <%= percent %>%; ">
             </div>
           </div>
+        </td>
+        <td>
+          <%= link_to t(".show"), "#", class: "btn btn-info btn-show", rel: "user_subject_#{user_subject.id}" %>
         </td>
       </tr>
     <% end %>
