@@ -8,13 +8,13 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :activities
-  has_many :users_courses
+  has_many :activities, dependent: :destroy
+  has_many :users_courses, dependent: :destroy
   has_many :courses, through: :users_courses
-  has_many :users_subjects
+  has_many :users_subjects, dependent: :destroy
   has_many :courses_subjects, through: :users_subjects
   has_many :subjects, through: :courses_subjects
-  has_many :users_tasks
+  has_many :users_tasks, dependent: :destroy
   has_many :tasks, through: :users_tasks
 
   scope :supervisors, -> { where(supervisor: true) }

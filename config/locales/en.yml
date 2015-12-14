@@ -55,8 +55,10 @@ en:
   supervisor:
     courses:
       course:
-        edit: Edit
         delete: Delete
+        edit: Edit
+      destroy:
+        course_delete: Successfully Deleted
       edit:
         danger: Cannot edit course now.
         submit: Update Course
@@ -80,8 +82,6 @@ en:
         finish: Finish Course
         hide: Hide
         start: Start Course
-      destroy:
-        course_delete: Successfully Deleted
     courses_subjects:
       edit:
         danger: Cannot edit subjcet now.
@@ -105,6 +105,11 @@ en:
       task_fields:
         name_placeholder: Task Name
         remove_button: Remove a task
+    users:
+      destroy:
+        delete_confirmation: Users Successfully Deleted
+      index:
+        delete: Delete
   system_name: Framgia Training Management System
   tasks: 'Tasks:'
   user_activities: User activities
@@ -114,6 +119,8 @@ en:
     finished: Finished
     histories_of_courses: Histories of courses
     id: ID
+    index:
+      delete: Delete
     join_date: Join date
     name: Name
     participated_courses: Participated courses
