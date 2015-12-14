@@ -110,6 +110,11 @@ en:
         delete_confirmation: Users Successfully Deleted
       index:
         delete: Delete
+    users_courses:
+      edit:
+        name: Name
+        title: Asssign %{assign_type}
+        update: Update assigned %{assign_type}
   system_name: Framgia Training Management System
   tasks: 'Tasks:'
   user_activities: User activities
