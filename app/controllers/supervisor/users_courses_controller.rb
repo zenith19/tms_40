@@ -7,6 +7,12 @@ class Supervisor::UsersCoursesController < ApplicationController
 
   def update
     if @course.update_attributes course_params
+      @course.assigned_users.each do |user|
+        UserMailer.delay.assigned_supervisors user.full_name, user.email, @course.id
+      end
+      @course.removed_supervisors.each do |user|
+        UserMailer.delay.removed_supervisors user.full_name, user.email, @course.id
+      end
       redirect_to supervisor_course_path(@course)
     else
       render :edit

@@ -5,6 +5,11 @@ en:
     show: Show
   confirm_message: You sure?
   contact: Contact
+  user_mailer:
+    assigned_supervisors:
+      subject: "You have been assigned to course: %{course_name}"
+    removed_supervisors:
+      subject: "You have been removed from course: %{course_name}"
   courses:
     show:
       course_name: 'Course Name: '
@@ -136,3 +141,7 @@ en:
   view_all_supervisors: Supervisors
   view_all_trainee: Trainees
   welcome_message: Welcome to
+  hi: "Hi!,"
+  assign_courses_message: You have been assigned to a course.
+  remove_courses_message: You have been removed to a course.
+  course: Course:

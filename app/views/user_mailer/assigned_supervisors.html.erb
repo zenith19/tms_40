@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h2><%= I18n.t :hi %> <%= @user_full_name %></h2>
+    <h1><%= I18n.t :welcome_message %> <%= I18n.t :system_name %></h1>
+    <p>
+      <%= I18n.t :assign_courses_message %>
+    </p>
+    <p><%= I18n.t :course %> <%= link_to @course.name, supervisor_course_path(@course) %></p>
+  </body>
+</html>
