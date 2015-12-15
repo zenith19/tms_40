@@ -9,6 +9,8 @@ class Supervisor::SubjectsController < ApplicationController
   def show
     @subject = Subject.find params[:id]
     @tasks = @subject.tasks
+    @subject_activities = PublicActivity::Activity.order("created_at desc").
+      where(trackable_type: "Subject", recipient_id: @subject.id)
   end
 
   def new
@@ -19,7 +21,7 @@ class Supervisor::SubjectsController < ApplicationController
   def create
     @subject = Subject.new subject_params
     if @subject.save
-      redirect_to subjects_path
+      redirect_to supervisor_subjects_path
     else
       render :new
     end
@@ -30,7 +32,7 @@ class Supervisor::SubjectsController < ApplicationController
 
   def update
     if @subject.update_attributes subject_params
-      redirect_to subjects_path
+      redirect_to supervisor_subjects_path
     else
       render :edit
     end
@@ -38,7 +40,7 @@ class Supervisor::SubjectsController < ApplicationController
 
   def destroy
     @subject.destroy
-    redirect_to subjects_url
+    redirect_to supervisor_subjects_path
   end
 
   private
