@@ -54,8 +54,7 @@ end
 10.times do |uc|
   uid = "#{uc+1}"
   UsersCourse.create! user_id: uid,
-                    course_id: 1,
-                    removed: false
+                    course_id: 1
 end
 
 5.times do |cs|

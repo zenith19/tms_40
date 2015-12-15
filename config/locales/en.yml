@@ -1,6 +1,8 @@
 en:
   about: About
   assign_courses_message: You have been assigned to a course.
+  activity_log: Activity Log
+  activity_message_ago: ago
   button:
     hide: Hide
     show: Show
