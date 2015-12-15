@@ -11,9 +11,9 @@ class UsersController < ApplicationController
 
   def update
     if @user.update_attributes user_params
-      redirect_to course_path
+      redirect_to edit_courses_subject_path
     else
-      render "courses_subjects/edit"
+      render "courses_subject/edit"
     end
   end
 

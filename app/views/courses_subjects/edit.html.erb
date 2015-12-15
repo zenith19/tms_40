@@ -6,12 +6,26 @@
   <h3><%= t ".tasks" %></h3>
   <%= form_for current_user do |f| %>
     <div class="field form-group">
-      <%= f.label(:title, t ".check" ) %><br>
+      <%= f.label(:title, t(".check")) %><br>
       <%= f.collection_check_boxes(:task_ids, @courses_subject.tasks, :id, :name) do |b| %>
-        <%= b.label(class: "checkbox-inline") {b.check_box + b.text} %>
+        <%= b.label(class: "checkbox-inline") { b.check_box + b.text } %>
       <% end %>
     </div>
-    <center><%= f.submit t(".update"), class: "btn btn-primary" %></center>
+    <% if @courses_subject.users_subjects.find_by_user(current_user.id)== nil %>
+      <center>
+        <%= f.submit t(".update"), class: "btn btn-primary" %>
+      </center>
+    <% end %>
+  <% end %>
+  <br>
+  <%= form_for UsersSubject.new do |f| %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.hidden_field :courses_subject_id, value: @courses_subject.id %>
+    <% if @courses_subject.users_subjects.find_by_user(current_user.id)== nil %>
+      <center>
+        <%= f.submit t("finish"), class: "btn btn-primary" %>
+      </center>
+    <% end %>
   <% end %>
 </div>
 
