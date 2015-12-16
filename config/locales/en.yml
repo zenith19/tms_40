@@ -1,19 +1,16 @@
 en:
   about: About
+  assign_courses_message: You have been assigned to a course.
   button:
     hide: Hide
     show: Show
   confirm_message: You sure?
   contact: Contact
-  user_mailer:
-    assigned_supervisors:
-      subject: "You have been assigned to course: %{course_name}"
-    removed_supervisors:
-      subject: "You have been removed from course: %{course_name}"
+  course: "Course:"
   courses:
     show:
-      course_name: 'Course Name: '
-      no_of_supervisors: ' supervisor(s)'
+      course_name: "Course Name: "
+      no_of_supervisors: " supervisor(s)"
       progress_bars: Progress Bars
       subj_desc: Subject Description
       subj_name: Subject Name
@@ -21,23 +18,27 @@ en:
       supervisor_name: Supervisor Name
   courses_subjects:
     edit:
-      check: 'Check Tasks which you have already finished:'
+      check: "Check Tasks which you have already finished:"
       subj_desc: Description
-      subj_name: 'Subject Name: '
-      tasks: 'Tasks: '
+      subj_name: "Subject Name: "
+      tasks: "Tasks: "
       update: Update
   finish: Finish
   finished: Finished
+  flash_assign_supervisors: Sorry! Course has already finished. You cannot assign a supervisor in this course.
+  flash_assign_trainees: Sorry! Course has already started. You cannot assign a trainee in this course.
   flash_course_created: Course Successfully Created
   footer_text: © Framgia Bangladesh 2015
   helpers:
     submit:
       create: Create new %{model}
       edit: Update %{model}
+  hi: "Hi!,"
   hide: Hide
   home: Home
   log_in: Log in
   log_out: Log out
+  remove_courses_message: You have been removed to a course.
   show: Show
   sign_up: Sign Up Now!
   subjects:
@@ -59,6 +60,16 @@ en:
       name_placeholder: Task name
       remove_button: Remove a task
   supervisor:
+    assign_supervisors:
+      show:
+        name: Supervisor name
+        title: Assign Supervisor to %{course_name}
+        update: Update assigned supervisors
+    assign_trainees:
+      show:
+        name: Trainees Name
+        title: Assign Trainees to %{course_name}
+        update: Update assigned trainees
     courses:
       course:
         delete: Delete
@@ -122,8 +133,13 @@ en:
         title: Asssign %{assign_type}
         update: Update assigned %{assign_type}
   system_name: Framgia Training Management System
-  tasks: 'Tasks:'
+  tasks: "Tasks:"
   user_activities: User activities
+  user_mailer:
+    assigned_supervisors:
+      subject: You have been assigned to course: %{course_name}
+    removed_supervisors:
+      subject: You have been removed from course: %{course_name}
   users:
     created: Created at
     email: Email
@@ -141,7 +157,3 @@ en:
   view_all_supervisors: Supervisors
   view_all_trainee: Trainees
   welcome_message: Welcome to
-  hi: "Hi!,"
-  assign_courses_message: You have been assigned to a course.
-  remove_courses_message: You have been removed to a course.
-  course: Course:

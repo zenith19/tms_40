@@ -18,16 +18,6 @@ class Course < ActiveRecord::Base
   validate :start_must_be_before_end_date
   after_initialize :default_values
 
-  def trainees
-    User.joins(:courses).
-      where("users.supervisor = ? AND courses.id = ?", false, id)
-  end
-  
-  def supervisors
-    User.joins(:courses).
-      where("users.supervisor = ? AND courses.id = ?", true, id)
-  end
-
   def new?
     status == STATUS[:new]
   end
