@@ -146,7 +146,11 @@ en:
     notify_deadline:
       subject: "The deadline of course: %{course_name} is coming very soon"
     removed_supervisors:
-      subject: "You have been removed from course: %{course_name}"
+      subject: You have been removed from course: %{course_name}
+    assigned_trainees:
+      subject: You have been assigned to course: %{course_name}
+    removed_trainees:
+      subject: You have been removed from course: %{course_name}
   users:
     created: Created at
     email: Email
