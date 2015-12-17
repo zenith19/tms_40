@@ -1,7 +1,8 @@
 class UsersCourse < ActiveRecord::Base
-  
+
   include PublicActivity::Model
   tracked owner: ->(controller, model) {controller && controller.current_user}
+  acts_as_paranoid
   ASSIGN_TYPE = {
     supervisor: "supervisor",
     trainee: "trainee"

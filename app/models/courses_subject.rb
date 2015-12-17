@@ -1,4 +1,5 @@
 class CoursesSubject < ActiveRecord::Base
+  acts_as_paranoid
   STATUS = {
     new: 0,
     started: 1,
