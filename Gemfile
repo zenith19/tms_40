@@ -32,6 +32,7 @@ gem "will_paginate-bootstrap"
 gem "bootstrap-datepicker-rails"
 gem "cancancan"
 gem "sidekiq"
+gem "whenever", "~> 0.9.4", require: false
 # Use ActiveModel has_secure_password
 # gem "bcrypt", "~> 3.1.7"
 

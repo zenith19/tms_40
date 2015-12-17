@@ -33,11 +33,12 @@ en:
     submit:
       create: Create new %{model}
       edit: Update %{model}
-  hi: "Hi!,"
+  hi: Hi!,
   hide: Hide
   home: Home
   log_in: Log in
   log_out: Log out
+  notify_deadline_message: Deadline of the following course has come very near. Please hurry up.
   remove_courses_message: You have been removed to a course.
   show: Show
   sign_up: Sign Up Now!
@@ -137,9 +138,11 @@ en:
   user_activities: User activities
   user_mailer:
     assigned_supervisors:
-      subject: You have been assigned to course: %{course_name}
+      subject: "You have been assigned to course: %{course_name}"
+    notify_deadline:
+      subject: "The deadline of course: %{course_name} is coming very soon"
     removed_supervisors:
-      subject: You have been removed from course: %{course_name}
+      subject: "You have been removed from course: %{course_name}"
   users:
     created: Created at
     email: Email

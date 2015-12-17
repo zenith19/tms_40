@@ -17,6 +17,7 @@ class Course < ActiveRecord::Base
   validates :end_date, presence: true
   validate :start_must_be_before_end_date
   after_initialize :default_values
+  scope :near_deadline, ->{where "end_date < ?", 5.days.since}
 
   def new?
     status == STATUS[:new]
