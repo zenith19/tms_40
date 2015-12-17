@@ -1,9 +1,13 @@
 en:
+  user_mailer:
+    daily_report:
+      name: Course name
+      progress: Overall progress (in percentage)
+useren:
   about: About
-  activity_message_ago: ago
-  assign_courses_message: You have been assigned to a course.
   activity_log: Activity Log
   activity_message_ago: ago
+  assign_courses_message: You have been assigned to a course.
   button:
     hide: Hide
     show: Show
@@ -26,6 +30,7 @@ en:
       subj_name: "Subject Name: "
       tasks: "Tasks: "
       update: Update
+  daily_report_message: The progress of your assigned courses are shown below
   finish: Finish
   finished: Finished
   flash_assign_supervisors: Sorry! Course has already finished. You cannot assign a supervisor in this course.
@@ -143,14 +148,16 @@ en:
   user_mailer:
     assigned_supervisors:
       subject: "You have been assigned to course: %{course_name}"
+    assigned_trainees:
+      subject: "You have been assigned to course: %{course_name}"
+    daily_report:
+      subject: Daily report about course progress
     notify_deadline:
       subject: "The deadline of course: %{course_name} is coming very soon"
     removed_supervisors:
-      subject: You have been removed from course: %{course_name}
-    assigned_trainees:
-      subject: You have been assigned to course: %{course_name}
+      subject: "You have been removed from course: %{course_name}"
     removed_trainees:
-      subject: You have been removed from course: %{course_name}
+      subject: "You have been removed from course: %{course_name}"
   users:
     created: Created at
     email: Email

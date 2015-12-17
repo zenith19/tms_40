@@ -111,8 +111,9 @@ ActiveRecord::Schema.define(version: 20151215121023) do
   create_table "users_subjects", force: :cascade do |t|
     t.integer  "user_id",            limit: 4
     t.integer  "courses_subject_id", limit: 4
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.integer  "status",             limit: 1, default: 0
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
   end
 
   add_index "users_subjects", ["courses_subject_id"], name: "index_users_subjects_on_courses_subject_id", using: :btree

@@ -20,22 +20,4 @@ module CoursesHelper
     end
     return percent
   end
-
-  def find_course_percent
-    total_subjects_no = 0
-    completed_subjects_no = 0
-    @subjects.each do |subject|
-      courses_subject = CoursesSubject.find_by_course_id_and_subject_id @course.id, subject.id
-      unless courses_subject.status
-        completed_subjects_no += 1   
-      end
-      total_subjects_no += 1
-    end
-    unless total_subjects_no == 0
-      course_percent = (completed_subjects_no / total_subjects_no) * 100 
-    else
-      course_percent = 0
-    end
-    return course_percent
-  end
 end

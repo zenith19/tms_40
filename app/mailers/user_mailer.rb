@@ -28,4 +28,9 @@ class UserMailer < ApplicationMailer
     @user_full_name = user_full_name
     mail to: user_email, subject: default_i18n_subject(course_name: @course.name)
   end
+
+  def daily_report supervisor_id
+    @supervisor = User.find supervisor_id
+    mail to: @supervisor.email, subject: default_i18n_subject
+  end
 end

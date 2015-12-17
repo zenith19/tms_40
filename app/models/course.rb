@@ -14,6 +14,7 @@ class Course < ActiveRecord::Base
   has_many :courses_subjects, dependent: :destroy
   has_many :users, through: :users_courses
   has_many :subjects, through: :courses_subjects
+  has_many :users_subjects, through: :courses_subjects
   validates :name, presence: true
   validates :description, presence: true
   validates :start_date, presence: true
@@ -45,13 +46,18 @@ class Course < ActiveRecord::Base
     status == STATUS[:finished]
   end
 
+  def progress
+    return 0 if users_subjects.size.zero?
+    users_subjects.finished.size * 100 / users_subjects.size
+  end
+
   def start_must_be_before_end_date
     errors.add(:start_date, "must be before end date") unless
-    self.start_date < self.end_date
+    start_date < end_date
   end
 
   def default_values
-    self.assigned_users ||= []
-    self.removed_users ||= []
+    assigned_users ||= []
+    removed_users ||= []
   end
 end
