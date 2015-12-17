@@ -39,7 +39,8 @@ subjects = Subject.all
                           start_date: Faker::Date.backward,
                           end_date: Faker::Date.forward,
                           status: 0
-  course.user_ids = [supervisor1.id]
+  course.users = [supervisor1]
+
   5.times do |uc|
     course.user_ids = course.user_ids << trainees.sample.id
   end
@@ -54,18 +55,24 @@ end
 2.times do |uc|
   uid = "#{uc+1}"
   UsersCourse.create! user_id: uid,
-                    course_id: 1
-end
+                      course_id: 1
 
 5.times do |cs|
   sid = "#{cs+1}"
   CoursesSubject.create! subject_id: sid,
-                    course_id: 1
+                         course_id: 1
 end
-
 
 5.times do |cst|
   tid = "#{cst+1}"
   CoursesSubjectsTask.create! task_id: tid,
-                    courses_subject_id: 1
-end                  
+                              courses_subject_id: 1
+end
+
+5.times do |cst|
+  Activity.create! trackable_id: 1,
+                   owner_id: 3,
+                   owner_type: "User",
+                   trackable_type: "Course",
+                   key: "course.update"
+end
