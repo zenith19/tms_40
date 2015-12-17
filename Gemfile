@@ -33,6 +33,7 @@ gem "bootstrap-datepicker-rails"
 gem "cancancan"
 gem "sidekiq"
 gem "whenever", "~> 0.9.4", require: false
+gem "public_activity"
 # Use ActiveModel has_secure_password
 # gem "bcrypt", "~> 3.1.7"
 

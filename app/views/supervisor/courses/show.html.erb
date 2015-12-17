@@ -49,3 +49,19 @@
     </div>
   <% end %>
 </ol>
+<br>
+<h3><%= t "activity_log" %></h3>
+<table class="table">
+  <% @activities.each do |activity| %>
+  <tr>
+    <td>
+      <b class="text-capitalize"><%= @course.name %></b>
+      <% key = activity.key %>
+      <%= key[7,key.length] << "d by" %>
+      <%= link_to activity.owner.first_name %>
+      <%= time_ago_in_words(activity.created_at).gsub('about','') %>
+      <%= t "ago" %>
+    </td>
+  </tr>
+  <% end %>
+</table>

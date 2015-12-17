@@ -1,4 +1,7 @@
 class Course < ActiveRecord::Base
+  include PublicActivity::Model
+  tracked owner: ->(controller, model) {controller && controller.current_user}
+  tracked recipient: ->(controller, model) {model && model}
 
   STATUS = {
     new: 0,
@@ -16,8 +19,19 @@ class Course < ActiveRecord::Base
   validates :start_date, presence: true
   validates :end_date, presence: true
   validate :start_must_be_before_end_date
+
   after_initialize :default_values
   scope :near_deadline, ->{where "end_date < ?", 5.days.since}
+
+  def trainees
+    User.joins(:courses).
+      where("users.supervisor = ? AND courses.id = ?", false, id)
+  end
+
+  def supervisors
+    User.joins(:courses).
+      where("users.supervisor = ? AND courses.id = ?", true, id)
+  end
 
   def new?
     status == STATUS[:new]
