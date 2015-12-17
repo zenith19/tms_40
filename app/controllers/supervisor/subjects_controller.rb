@@ -10,7 +10,7 @@ class Supervisor::SubjectsController < ApplicationController
     @subject = Subject.find params[:id]
     @tasks = @subject.tasks
     @subject_activities = PublicActivity::Activity.order("created_at desc").
-      where(trackable_type: "Subject", recipient_id: @subject.id)
+      where trackable_type: "Subject", trackable_id: @subject.id
   end
 
   def new

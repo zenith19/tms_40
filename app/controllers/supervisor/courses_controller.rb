@@ -24,7 +24,7 @@ class Supervisor::CoursesController < ApplicationController
 
   def show
     @activities = PublicActivity::Activity.order("created_at desc")
-      .where(trackable_type: "Course", recipient_id: @course.id)
+      .where trackable_type: "Course", trackable_id: @course.id
   end
 
   def edit

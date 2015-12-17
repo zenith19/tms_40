@@ -9,8 +9,7 @@ class Supervisor::AssignTraineesController < ApplicationController
   def update
     if @course.update_attributes course_params
       @course.assigned_users.each do |user|
-        UserMailer.delay.assigned_trainees user.full_name, user.email, 
-          @course.id
+        UserMailer.delay.assigned_trainees user.full_name, user.email, @course.id
       end
       @course.removed_users.each do |user|
         UserMailer.delay.removed_trainees user.full_name, user.email, @course.id

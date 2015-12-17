@@ -2,7 +2,6 @@ class Subject < ActiveRecord::Base
   
   include PublicActivity::Model
   tracked owner: ->(controller, model) {controller && controller.current_user}
-  tracked recipient: ->(controller, model) {model && model}
   has_many :tasks , dependent: :destroy
   has_many :users_subject
   has_many :users, through: :users_subject
