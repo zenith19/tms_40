@@ -2,8 +2,8 @@
 <h4><%= t ".course_name" %> <%= @course.name.upcase %></h4><br>
 <h4><%= @course.users.supervisors.count %><%= t ".no_of_supervisors" %></h4>
 <div class="progress">
-  <div class="progress-bar" role="progressbar" aria-valuenow="<%= find_course_percent %>"
-    aria-valuemin="0"  aria-valuemax="100" style="width: <%= find_course_percent %>%;">
+  <div class="progress-bar" role="progressbar" aria-valuenow="<%= @course.progress %>"
+    aria-valuemin="0"  aria-valuemax="100" style="width: <%= @course.progress %>%;">
   </div>
 </div>
 <table class="table table-striped">
