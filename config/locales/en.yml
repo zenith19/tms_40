@@ -3,7 +3,6 @@ en:
     daily_report:
       name: Course name
       progress: Overall progress (in percentage)
-useren:
   about: About
   activity_log: Activity Log
   activity_message_ago: ago

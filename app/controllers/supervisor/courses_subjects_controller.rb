@@ -39,6 +39,7 @@ class Supervisor::CoursesSubjectsController < ApplicationController
   def update_status!
     if @courses_subject.new?
       @courses_subject.status = CoursesSubject::STATUS[:started]
+      @courses_subject.users = @courses_subject.course.trainees      
     elsif @courses_subject.started?
       @courses_subject.status = CoursesSubject::STATUS[:finished]
     end
