@@ -43,3 +43,21 @@
     <% end %>
   </tbody>
 </table>
+<h3><%= t "activity_log" %></h3>
+<table class="table">
+  <% @activities.each do |activity| %>
+  <tr>
+    <td>
+      <b class="text-capitalize">
+        <%= activity.trackable_type %>
+      </b>
+      <% key = activity.key %>
+      <% index_of_dot = key.index(".")%>
+      <%= key[index_of_dot+1,key.length] << "d by" %>
+      <%= link_to activity.owner.first_name %>
+      <%= time_ago_in_words(activity.created_at).gsub("about","") %>
+      <%= t "ago" %>
+    </td>
+  </tr>
+  <% end %>
+</table>

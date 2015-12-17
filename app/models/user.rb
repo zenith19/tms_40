@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   acts_as_paranoid
+
   TYPES = {
     trainee: "0",
     supervisor: "1"
@@ -21,8 +22,8 @@ class User < ActiveRecord::Base
   scope :supervisors, -> {where supervisor: true}
   scope :trainees, -> {where supervisor: false}
   scope :free,  -> {
-    joins(:courses).where.not courses: {status: Course::STATUS[:finished]} 
-  }  
+    joins(:courses).where.not courses: {status: Course::STATUS[:finished]}
+  }
   scope :assignable_trainees, ->(course) {
     excluded_trainees_ids = free.trainees.ids - course.users.trainees.ids
     where.not(id: excluded_trainees_ids).trainees

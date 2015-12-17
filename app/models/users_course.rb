@@ -13,7 +13,7 @@ class UsersCourse < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :course
-  
+
   def appened_assigned_users
     course.assigned_users << user
   end
