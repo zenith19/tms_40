@@ -2,6 +2,7 @@ class Subject < ActiveRecord::Base
   
   include PublicActivity::Model
   tracked owner: ->(controller, model) {controller && controller.current_user}
+  acts_as_paranoid
   has_many :tasks , dependent: :destroy
   has_many :users_subject
   has_many :users, through: :users_subject

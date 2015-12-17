@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151215121023) do
+ActiveRecord::Schema.define(version: 20151217081032) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id",   limit: 4
@@ -24,8 +24,10 @@ ActiveRecord::Schema.define(version: 20151215121023) do
     t.string   "recipient_type", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "deleted_at"
   end
 
+  add_index "activities", ["deleted_at"], name: "index_activities_on_deleted_at", using: :btree
   add_index "activities", ["owner_id", "owner_type"], name: "index_activities_on_owner_id_and_owner_type", using: :btree
   add_index "activities", ["recipient_id", "recipient_type"], name: "index_activities_on_recipient_id_and_recipient_type", using: :btree
   add_index "activities", ["trackable_id", "trackable_type"], name: "index_activities_on_trackable_id_and_trackable_type", using: :btree
@@ -38,7 +40,10 @@ ActiveRecord::Schema.define(version: 20151215121023) do
     t.integer  "status",      limit: 1,     default: 0
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
+    t.datetime "deleted_at"
   end
+
+  add_index "courses", ["deleted_at"], name: "index_courses_on_deleted_at", using: :btree
 
   create_table "courses_subjects", force: :cascade do |t|
     t.integer  "course_id",  limit: 4
@@ -46,9 +51,11 @@ ActiveRecord::Schema.define(version: 20151215121023) do
     t.integer  "status",     limit: 1, default: 0
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
+    t.datetime "deleted_at"
   end
 
   add_index "courses_subjects", ["course_id"], name: "index_courses_subjects_on_course_id", using: :btree
+  add_index "courses_subjects", ["deleted_at"], name: "index_courses_subjects_on_deleted_at", using: :btree
   add_index "courses_subjects", ["subject_id"], name: "index_courses_subjects_on_subject_id", using: :btree
 
   create_table "courses_subjects_tasks", force: :cascade do |t|
@@ -56,9 +63,11 @@ ActiveRecord::Schema.define(version: 20151215121023) do
     t.integer  "task_id",            limit: 4
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
+    t.datetime "deleted_at"
   end
 
   add_index "courses_subjects_tasks", ["courses_subject_id"], name: "index_courses_subjects_tasks_on_courses_subject_id", using: :btree
+  add_index "courses_subjects_tasks", ["deleted_at"], name: "index_courses_subjects_tasks_on_deleted_at", using: :btree
   add_index "courses_subjects_tasks", ["task_id"], name: "index_courses_subjects_tasks_on_task_id", using: :btree
 
   create_table "subjects", force: :cascade do |t|
@@ -66,15 +75,20 @@ ActiveRecord::Schema.define(version: 20151215121023) do
     t.text     "description", limit: 65535
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+    t.datetime "deleted_at"
   end
+
+  add_index "subjects", ["deleted_at"], name: "index_subjects_on_deleted_at", using: :btree
 
   create_table "tasks", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.integer  "subject_id", limit: 4
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.datetime "deleted_at"
   end
 
+  add_index "tasks", ["deleted_at"], name: "index_tasks_on_deleted_at", using: :btree
   add_index "tasks", ["subject_id"], name: "index_tasks_on_subject_id", using: :btree
 
   create_table "users", force: :cascade do |t|
@@ -93,8 +107,10 @@ ActiveRecord::Schema.define(version: 20151215121023) do
     t.datetime "created_at",                                         null: false
     t.datetime "updated_at",                                         null: false
     t.boolean  "supervisor",                         default: false
+    t.datetime "deleted_at"
   end
 
+  add_index "users", ["deleted_at"], name: "index_users_on_deleted_at", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
@@ -103,9 +119,11 @@ ActiveRecord::Schema.define(version: 20151215121023) do
     t.integer  "course_id",  limit: 4
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
+    t.datetime "deleted_at"
   end
 
   add_index "users_courses", ["course_id"], name: "index_users_courses_on_course_id", using: :btree
+  add_index "users_courses", ["deleted_at"], name: "index_users_courses_on_deleted_at", using: :btree
   add_index "users_courses", ["user_id"], name: "index_users_courses_on_user_id", using: :btree
 
   create_table "users_subjects", force: :cascade do |t|
@@ -114,9 +132,11 @@ ActiveRecord::Schema.define(version: 20151215121023) do
     t.integer  "status",             limit: 1, default: 0
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
+    t.datetime "deleted_at"
   end
 
   add_index "users_subjects", ["courses_subject_id"], name: "index_users_subjects_on_courses_subject_id", using: :btree
+  add_index "users_subjects", ["deleted_at"], name: "index_users_subjects_on_deleted_at", using: :btree
   add_index "users_subjects", ["user_id"], name: "index_users_subjects_on_user_id", using: :btree
 
   create_table "users_tasks", force: :cascade do |t|
@@ -124,8 +144,10 @@ ActiveRecord::Schema.define(version: 20151215121023) do
     t.integer  "task_id",    limit: 4
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
+    t.datetime "deleted_at"
   end
 
+  add_index "users_tasks", ["deleted_at"], name: "index_users_tasks_on_deleted_at", using: :btree
   add_index "users_tasks", ["task_id"], name: "index_users_tasks_on_task_id", using: :btree
   add_index "users_tasks", ["user_id"], name: "index_users_tasks_on_user_id", using: :btree
 
