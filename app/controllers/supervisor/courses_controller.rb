@@ -33,10 +33,10 @@ class Supervisor::CoursesController < ApplicationController
   def update
     if course_params.has_key? :update_status
       update_status!
-      redirect_to supervisor_course_path(@course)
+      redirect_to supervisor_course_path @course
     else
       if @course.update_attributes course_params
-        redirect_to supervisor_course_path(@course)
+        redirect_to supervisor_course_path @course
       else
         render :edit
       end
@@ -69,7 +69,8 @@ class Supervisor::CoursesController < ApplicationController
   end
 
   def check_course
-    if (@course.started? && !course_params.has_key?(:update_status)) || @course.finished?
+    if (@course.started? && !course_params.has_key?(:update_status)) || 
+        @course.finished?
       flash[:danger] = t ".danger"
       redirect_to supervisor_courses_path
     end
