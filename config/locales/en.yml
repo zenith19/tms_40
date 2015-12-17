@@ -1,5 +1,6 @@
 en:
   about: About
+  activity_message_ago: ago
   assign_courses_message: You have been assigned to a course.
   activity_log: Activity Log
   activity_message_ago: ago
@@ -137,6 +138,7 @@ en:
         update: Update assigned %{assign_type}
   system_name: Framgia Training Management System
   tasks: "Tasks:"
+  title_activities: Activities
   user_activities: User activities
   user_mailer:
     assigned_supervisors:
