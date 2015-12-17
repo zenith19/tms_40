@@ -1,5 +1,7 @@
 class UsersCourse < ActiveRecord::Base
-
+  
+  include PublicActivity::Model
+  tracked owner: ->(controller, model) {controller && controller.current_user}
   ASSIGN_TYPE = {
     supervisor: "supervisor",
     trainee: "trainee"

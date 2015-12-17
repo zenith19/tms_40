@@ -1,4 +1,4 @@
-## supervisors
+# #supervisors
  supervisor1 = User.create!(first_name: "test",
               last_name: "test",
               email: "test@test.com",
@@ -51,7 +51,7 @@ subjects = Subject.all
 end
 
 # Assign course
-10.times do |uc|
+2.times do |uc|
   uid = "#{uc+1}"
   UsersCourse.create! user_id: uid,
                     course_id: 1
@@ -68,4 +68,4 @@ end
   tid = "#{cst+1}"
   CoursesSubjectsTask.create! task_id: tid,
                     courses_subject_id: 1
-end
+end                  
