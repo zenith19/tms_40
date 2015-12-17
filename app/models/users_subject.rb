@@ -12,10 +12,6 @@ class UsersSubject < ActiveRecord::Base
   belongs_to :subject
   scope :finished, ->{where status: STATUS[:finished]}
 
-  def self.find_by_user(user_id)
-    UsersSubject.find_by("user_id = ?", user_id)
-  end
-
   def new?
     status == STATUS[:new]
   end
