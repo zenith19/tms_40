@@ -1,6 +1,6 @@
 $(document).ready(function() {
   $(".btn-hide").click(function(){
-    $(this).parent().parent().next().toggleClass('hidden', 2000);
+    $(this).parent().parent().next().toggleClass("hidden", 2000);
     var btnName = $(this).html();
     if (btnName == "<%= I18n.t 'hide' %>")
       $(this).html("<%= I18n.t 'show' %>");
@@ -9,12 +9,12 @@ $(document).ready(function() {
     end
   });
 
-  $('#sd').datepicker().on('changeDate', function(event) {
+  $("#sd").datepicker({format: "dd/mm/yyyy"}).on("changeDate", function(event) {
     var start_date = $("#sd").val();
-    $('#ed').data('datepicker').setStartDate(start_date);
+    $("#ed").data("datepicker").setStartDate(start_date);
   });
-  $('#ed').datepicker().on('changeDate', function(event) {
+  $("#ed").datepicker({format: "dd/mm/yyyy"}).on("changeDate", function(event) {
     var end_date = $("#ed").val();
-    $('#sd').data('datepicker').setEndDate(end_date);
+    $("#sd").data("datepicker").setEndDate(end_date);
   });
 });
