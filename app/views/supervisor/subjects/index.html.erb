@@ -9,6 +9,13 @@
         <th colspan="2"></th>
       </tr>
     </thead>
+    <%= search_form_for [:supervisor, @search] do |f| %>
+      <div class="form-group" >
+        <%= f.label :name_cont %>
+        <%= f.text_field :name_cont %>
+        <%= f.submit t "search_button" %>
+      </div>
+    <% end %>
     <%= will_paginate renderer: BootstrapPagination::Rails %>
     <% @subjects.each do |subject| %>
       <tr>
