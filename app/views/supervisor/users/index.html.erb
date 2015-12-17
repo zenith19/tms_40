@@ -1,5 +1,12 @@
 <table class="table table-striped">
   <%= will_paginate renderer: BootstrapPagination::Rails %><br><hr>
+  <%= search_form_for [:supervisor, @search] do |f| %>
+    <div class="form-group" >
+      <%= f.label :first_name_cont %>
+      <%= f.text_field :first_name_cont %>
+      <%= f.submit t "search_button" %>
+    </div>
+  <% end %>
   <th>Name</th><th>Email</th>
   <% @users.each do |user| %>
     <tr>

@@ -5,7 +5,8 @@ class Supervisor::CoursesController < ApplicationController
   load_and_authorize_resource except: [:new, :create]
 
   def index
-    @courses = current_user.courses.paginate page: params[:page], per_page: 10
+    @search = current_user.courses.search params[:q]
+    @courses = @search.result.paginate page: params[:page], per_page: 10
   end
 
   def new

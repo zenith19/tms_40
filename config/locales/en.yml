@@ -22,6 +22,7 @@ en:
     edit:
       check: "Check Tasks which you have already finished:"
       social_share: Hurray!! I have finished %{subject}. Did you finished it!
+      check: "Check Tasks which you have already finished:"
       subj_desc: Description
       subj_name: "Subject Name: "
       tasks: "Tasks: "
@@ -44,6 +45,7 @@ en:
   log_out: Log out
   notify_deadline_message: Deadline of the following course has come very near. Please hurry up.
   remove_courses_message: You have been removed to a course.
+  search_button: Search
   show: Show
   sign_up: Sign Up Now!
   subjects:
@@ -151,6 +153,7 @@ en:
     notify_deadline:
       subject: "The deadline of course: %{course_name} is coming very soon"
     removed_supervisors:
+      subject: "You have been removed from course: %{course_name}"
       subject: "You have been removed from course: %{course_name}"
     removed_trainees:
       subject: "You have been removed from course: %{course_name}"
