@@ -1,8 +1,4 @@
 en:
-  user_mailer:
-    daily_report:
-      name: Course name
-      progress: Overall progress (in percentage)
   about: About
   activity_log: Activity Log
   activity_message_ago: ago
@@ -25,6 +21,7 @@ en:
   courses_subjects:
     edit:
       check: "Check Tasks which you have already finished:"
+      social_share: Hurray!! I have finished %{subject}. Did you finished it!
       subj_desc: Description
       subj_name: "Subject Name: "
       tasks: "Tasks: "
@@ -38,8 +35,8 @@ en:
   footer_text: © Framgia Bangladesh 2015
   helpers:
     submit:
-      create: "Create new %{model}"
-      edit: "Update %{model}"
+      create: Create new %{model}
+      edit: Update %{model}
   hi: Hi!,
   hide: Hide
   home: Home
@@ -71,12 +68,12 @@ en:
     assign_supervisors:
       show:
         name: Supervisor name
-        title: "Assign Supervisor to %{course_name}"
+        title: Assign Supervisor to %{course_name}
         update: Update assigned supervisors
     assign_trainees:
       show:
         name: Trainees Name
-        title: "Assign Trainees to %{course_name}"
+        title: Assign Trainees to %{course_name}
         update: Update assigned trainees
     courses:
       course:
@@ -111,7 +108,7 @@ en:
       edit:
         danger: Cannot edit subjcet now.
         submit: Update Subject
-        title: "Edit Subject for %{course_name} Course"
+        title: Edit Subject for %{course_name} Course
       show:
         finish: Finish Subject
         start: Start Subject
@@ -138,8 +135,8 @@ en:
     users_courses:
       edit:
         name: Name
-        title: "Asssign %{assign_type}"
-        update: "Update assigned %{assign_type}"
+        title: Asssign %{assign_type}
+        update: Update assigned %{assign_type}
   system_name: Framgia Training Management System
   tasks: "Tasks:"
   title_activities: Activities
@@ -155,8 +152,6 @@ en:
       subject: "The deadline of course: %{course_name} is coming very soon"
     removed_supervisors:
       subject: "You have been removed from course: %{course_name}"
-    assigned_trainees:
-      subject: "You have been assigned to course: %{course_name}"
     removed_trainees:
       subject: "You have been removed from course: %{course_name}"
   users:

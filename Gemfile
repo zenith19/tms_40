@@ -35,6 +35,7 @@ gem "sidekiq"
 gem "whenever", "~> 0.9.4", require: false
 gem "public_activity"
 gem "paranoia", "~> 2.0"
+gem "social-share-button"
 # Use ActiveModel has_secure_password
 # gem "bcrypt", "~> 3.1.7"
 
