@@ -6,6 +6,7 @@ module CoursesHelper
     tasks = courses_subject.tasks
     total_tasks_no = tasks.size
     completed_tasks_no = 0
+    user_task = nil
     tasks.each do |task|
       user_task = UsersTask.find_by_user_id_and_task_id current_user.id, task.id 
       if user_task.present? 
@@ -14,10 +15,10 @@ module CoursesHelper
       user_task = nil
     end
     unless total_tasks_no == 0
-      percent = (completed_tasks_no/total_tasks_no) * 100  
+      percent = completed_tasks_no * 100 / total_tasks_no   
     else
       percent = 0
     end
-    return percent
+    percent
   end
 end

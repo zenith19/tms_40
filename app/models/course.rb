@@ -46,9 +46,10 @@ class Course < ActiveRecord::Base
     status == STATUS[:finished]
   end
 
-  def progress
+  def course_progress
     return 0 if users_subjects.size.zero?
-    users_subjects.finished.size * 100 / users_subjects.size
+    finished_user_subjects = users_subjects.where status: 1
+    finished_user_subjects.size * 100 / users_subjects.size
   end
 
   def start_must_be_before_end_date

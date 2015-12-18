@@ -36,6 +36,7 @@ gem "public_activity"
 gem "paranoia", "~> 2.0"
 gem "social-share-button"
 gem "ransack"
+gem "htmlbeautifier"
 # Use ActiveModel has_secure_password
 # gem "bcrypt", "~> 3.1.7"
 

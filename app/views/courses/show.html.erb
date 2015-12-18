@@ -1,9 +1,11 @@
-<h1><%= current_user.full_name %></h1><br>
-<h4><%= t ".course_name" %> <%= @course.name.upcase %></h4><br>
+<h1><%= current_user.full_name %></h1>
+<br>
+<h4><%= t ".course_name" %> <%= @course.name.upcase %></h4>
+<br>
 <h4><%= @course.users.supervisors.count %><%= t ".no_of_supervisors" %></h4>
 <div class="progress">
-  <div class="progress-bar" role="progressbar" aria-valuenow="<%= @course.progress %>"
-    aria-valuemin="0"  aria-valuemax="100" style="width: <%= @course.progress %>%;">
+  <div class="progress-bar" role="progressbar" aria-valuenow="<%= @course.course_progress %>"
+    aria-valuemin="0"  aria-valuemax="100" style="width: <%= @course.course_progress %>%;">
   </div>
 </div>
 <table class="table table-striped">
@@ -71,18 +73,18 @@
 <h3><%= t "activity_log" %></h3>
 <table class="table">
   <% @activities.each do |activity| %>
-  <tr>
-    <td>
-      <b class="text-capitalize">
-        <%= activity.trackable_type %>
-      </b>
-      <% key = activity.key %>
-      <% index_of_dot = key.index(".")%>
-      <%= key[index_of_dot+1,key.length] << "d by" %>
-      <%= link_to activity.owner.first_name %>
-      <%= time_ago_in_words(activity.created_at).gsub("about","") %>
-      <%= t "ago" %>
-    </td>
-  </tr>
+    <tr>
+      <td>
+        <b class="text-capitalize">
+          <%= activity.trackable_type %>
+        </b>
+        <% key = activity.key %>
+        <% index_of_dot = key.index(".")%>
+        <%= key[index_of_dot+1,key.length] << "d by" %>
+        <%= link_to activity.owner.first_name %>
+        <%= time_ago_in_words(activity.created_at).gsub "about","" %>
+        <%= t "ago" %>
+      </td>
+    </tr>
   <% end %>
 </table>
