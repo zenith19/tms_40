@@ -130,8 +130,9 @@ ActiveRecord::Schema.define(version: 20151217081032) do
     t.integer  "user_id",            limit: 4
     t.integer  "courses_subject_id", limit: 4
     t.integer  "status",             limit: 1, default: 0
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
+    t.boolean  "finished",                     default: false
     t.datetime "deleted_at"
   end
 
