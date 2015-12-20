@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :load_user, only: [:show, :update]
 
   def index
-    @search = User.trainees.search params[:q]
+    @search = User.trainee.search params[:q]
     @users = @search.result.paginate page: params[:page], per_page: 15
   end
   def show

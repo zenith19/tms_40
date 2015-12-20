@@ -3,10 +3,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   acts_as_paranoid
 
-  TYPES = {
-    trainee: "0",
-    supervisor: "1"
-  }
+  enum role: [:trainee, :supervisor]
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable
 
@@ -19,14 +16,12 @@ class User < ActiveRecord::Base
   has_many :users_tasks, dependent: :destroy
   has_many :tasks, through: :users_tasks
 
-  scope :supervisors, -> {where supervisor: true}
-  scope :trainees, -> {where supervisor: false}
   scope :free,  -> {
-    joins(:courses).where.not courses: {status: Course::STATUS[:finished]}
+    joins(:courses).where.not courses: {status: Course.statuses[:finished]}
   }
   scope :assignable_trainees, ->(course) {
-    excluded_trainees_ids = free.trainees.ids - course.users.trainees.ids
-    where.not(id: excluded_trainees_ids).trainees
+    excluded_ids = free.ids - course.users.ids
+    where.not(id: excluded_ids).trainees
   }
 
   def full_name
