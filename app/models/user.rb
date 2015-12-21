@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
   }
   scope :assignable_trainees, ->(course) {
     excluded_ids = free.ids - course.users.ids
-    where.not(id: excluded_ids).trainees
+      where.not(id: excluded_ids).trainee
   }
 
   def full_name

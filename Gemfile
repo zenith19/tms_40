@@ -51,7 +51,6 @@ group :development, :test do
   gem "byebug"
   gem "rspec-rails"
   gem "factory_girl_rails"
-  gem "shoulda-matchers", "~> 2.5"
 end
 
 group :development do
@@ -61,8 +60,9 @@ group :development do
   gem "spring"
 end
 
-group :test do
+group :test do  
   gem "capybara"
   gem "guard-rspec"
   gem "launchy"
+  gem "shoulda"
 end
