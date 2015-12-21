@@ -3,13 +3,12 @@
   <td><%= course.description.truncate 100 %></td>
   <td><%= (I18n.localize course.start_date, format: :short) if course.start_date %></td>
   <td><%= (I18n.localize course.end_date, format: :short) if course.end_date %></td>
-  <td><%= course.users.supervisors.count %></td>
-  <td><%= course.users.trainees.count %></td>
+  <td><%= course.supervisors.count %></td>
+  <td><%= course.trainees.count %></td>
   <% if can? :manage, @course %>
-    <% if @course.new? %>
-      <td><%= link_to t(".edit"), edit_supervisor_course_path(course) %></td>
-    <% end %>
-    <% if @course.finished? %>
+    <% if @course.created? %>
+      <td><%= link_to t(".edit"), edit_supervisor_course_path(course) %></td>    
+    <% elsif @course.finished? %>
       <td><%= link_to t(".delete"), [:supervisor, @course], method: :delete,
         class: "btn btn-danger", data: { confirm: t(:confirm_message) } %></td>
     <% end %>

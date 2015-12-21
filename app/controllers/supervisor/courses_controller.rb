@@ -24,8 +24,7 @@ class Supervisor::CoursesController < ApplicationController
   end
 
   def show
-    @activities = PublicActivity::Activity.order("created_at desc")
-      .where trackable_type: "Course", trackable_id: @course.id
+    @activities = @course.load_activities
   end
 
   def edit
@@ -33,14 +32,12 @@ class Supervisor::CoursesController < ApplicationController
 
   def update
     if course_params.has_key? :update_status
-      update_status!
-      redirect_to supervisor_course_path @course
+      @course.update_status!
+      redirect_to [:supervisor, @course]
+    elsif @course.update_attributes course_params
+      redirect_to [:supervisor, @course]
     else
-      if @course.update_attributes course_params
-        redirect_to supervisor_course_path @course
-      else
-        render :edit
-      end
+      render :edit
     end
   end
 
@@ -58,20 +55,10 @@ class Supervisor::CoursesController < ApplicationController
   def course_params
     params.require(:course).permit :name, :description, :start_date, :end_date,
       :update_status, subject_ids: []
-  end
-
-  def update_status!
-    if @course.new?
-      @course.status = Course::STATUS[:started]
-    elsif @course.started?
-      @course.status = Course::STATUS[:finished]
-    end
-    @course.save!
-  end
+  end  
 
   def check_course
-    if (@course.started? && !course_params.has_key?(:update_status)) || 
-        @course.finished?
+    if valid_for_status_update? course_params.has_key?(:update_status)
       flash[:danger] = t ".danger"
       redirect_to supervisor_courses_path
     end

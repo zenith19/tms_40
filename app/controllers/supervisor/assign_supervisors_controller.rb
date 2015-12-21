@@ -28,7 +28,7 @@ class Supervisor::AssignSupervisorsController < ApplicationController
   end
 
   def load_users
-    @users = User.supervisors
+    @users = User.supervisor
   end
 
   def course_params

@@ -2,10 +2,10 @@ class Supervisor::UsersController < ApplicationController
   def index
     @users = User.all.paginate page: params[:page], per_page: 15
     if params[:supervisor] == User::TYPES[:supervisor]
-      @search = User.supervisors.search params[:q]
+      @search = User.supervisor.search params[:q]
       @users = @search.result.paginate page: params[:page], per_page: 15
     elsif params[:supervisor] == User::TYPES[:trainee]
-      @search = User.trainees.search params[:q]
+      @search = User.trainee.search params[:q]
       @users = @search.result.paginate page: params[:page], per_page: 15
     end
   end

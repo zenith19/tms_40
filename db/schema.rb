@@ -106,7 +106,7 @@ ActiveRecord::Schema.define(version: 20151217081032) do
     t.string   "last_sign_in_ip",        limit: 255
     t.datetime "created_at",                                         null: false
     t.datetime "updated_at",                                         null: false
-    t.boolean  "supervisor",                         default: false
+    t.boolean  "role",                               default: false
     t.datetime "deleted_at"
   end
 

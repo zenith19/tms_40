@@ -3,11 +3,7 @@ class Course < ActiveRecord::Base
   tracked owner: ->(controller, model) {controller && controller.current_user}
   acts_as_paranoid
 
-  STATUS = {
-    new: 0,
-    started: 1,
-    finished: 2
-  }
+  enum status: [:created, :started, :finished]
   attr_accessor :update_status, :assigned_users, :removed_users
 
   has_many :users_courses, dependent: :destroy
@@ -24,32 +20,38 @@ class Course < ActiveRecord::Base
   after_initialize :default_values
   scope :near_deadline, ->{where "end_date < ?", 5.days.since}
 
-  def trainees
-    User.joins(:courses).
-      where("users.supervisor = ? AND courses.id = ?", false, id)
+  User.roles.each_key do |key|
+    define_method "#{key}s" do
+      users.send key
+    end
   end
 
-  def supervisors
-    User.joins(:courses).
-      where("users.supervisor = ? AND courses.id = ?", true, id)
-  end
-
-  def new?
-    status == STATUS[:new]
-  end
-
-  def started?
-    status == STATUS[:started]
-  end
-
-  def finished?
-    status == STATUS[:finished]
-  end
-
-  def course_progress
+  def progress
     return 0 if users_subjects.size.zero?
-    finished_user_subjects = users_subjects.where status: 1
-    finished_user_subjects.size * 100 / users_subjects.size
+    users_subjects.finished.size * 100 / users_subjects.size
+  end
+
+  def load_activities user = nil
+    if user
+      PublicActivity::Activity.order("created_at desc").
+        where owner_id: user.id, trackable_id: id
+    else
+      PublicActivity::Activity.order("created_at desc").
+        where trackable_type: "Course", trackable_id: id
+    end    
+  end
+
+  def update_status!
+    if created?
+      started!
+    elsif started?
+      finished!
+    end
+    save!
+  end
+
+  def valid_for_status_update? has_status
+    (started? && !has_status) || finished?
   end
 
   def start_must_be_before_end_date
@@ -58,7 +60,7 @@ class Course < ActiveRecord::Base
   end
 
   def default_values
-    assigned_users ||= []
-    removed_users ||= []
+    self.assigned_users ||= []
+    self.removed_users ||= []
   end
 end

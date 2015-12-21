@@ -3,12 +3,12 @@ supervisor1 = User.create! first_name: "test",
                            last_name: "test",
                            email: "test@test.com",
                            password: "password",
-                           supervisor: true
+                           role: :supervisor
 supervisor2 = User.create! first_name: "test1",
                            last_name: "test1",
                            email: "test1@test.com",
                            password: "password",
-                           supervisor: true
+                           role: :supervisor
 ## trainees
 99.times do |n|
   first_name = Faker::Name.first_name
@@ -38,16 +38,10 @@ subjects = Subject.all
     description: Faker::Lorem.paragraph,
     start_date: Faker::Date.backward,
     end_date: Faker::Date.forward,
-    status: 0
-  course.users = [supervisor1]
+    status: :created
 
-  5.times do |uc|
-    course.user_ids = course.user_ids << trainees.sample.id
-  end
-
-  3.times do |cs|
-    course.subject_ids = course.subject_ids << subjects.sample.id
-  end
+  course.subjects = subjects.sample 3  
+  course.users = [supervisor1] + trainees.sample(5)
   course.save!
 end
 

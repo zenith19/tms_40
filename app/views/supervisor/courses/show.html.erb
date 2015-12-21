@@ -2,7 +2,7 @@
 <%= form_for [:supervisor, @course] do |f| %>
   <%= f.hidden_field :update_status %>
   <% if can? :manage, @course %>
-    <% if @course.new? %>
+    <% if @course.created? %>
       <%= f.submit t(".start"), class: "btn btn-primary" %>
     <% elsif @course.started? %>
       <%= f.submit t(".finish"), class: "btn btn-primary" %>
