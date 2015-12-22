@@ -60,9 +60,8 @@ group :development do
   gem "spring"
 end
 
-group :test do  
+group :test do
   gem "capybara"
   gem "guard-rspec"
   gem "launchy"
   gem "shoulda"
-end
