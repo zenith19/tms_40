@@ -55,8 +55,10 @@ class Course < ActiveRecord::Base
   end
 
   def start_must_be_before_end_date
-    errors.add(:start_date, "must be before end date") unless
-    start_date < end_date
+    unless (start_date == nil || end_date == nil)
+      errors.add(:start_date, "must be before end date") unless 
+      self.start_date < self.end_date
+    end
   end
 
   def default_values
