@@ -12,4 +12,6 @@ describe Subject do
   it {expect have_many :users}
   it {expect have_many :tasks}
   it {expect have_many :courses_subjects}
+
+  it{ expect accept_nested_attributes_for :tasks }
 end
