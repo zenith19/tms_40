@@ -10,7 +10,13 @@ FactoryGirl.define do
     Course.statuses.each_key do |key|
       factory "#{key}_course" do
         status {Course.statuses[key]}
-      end      
+      end
+    end
+
+    [:english, :vietnamese].each do |item|
+      factory item do
+        name item
+      end
     end
   end
 end

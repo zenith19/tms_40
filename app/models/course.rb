@@ -50,7 +50,7 @@ class Course < ActiveRecord::Base
     save!
   end
 
-  def valid_for_status_update? has_status
+  def invalid_for_update? has_status
     (started? && !has_status) || finished?
   end
 
