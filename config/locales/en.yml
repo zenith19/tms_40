@@ -112,6 +112,8 @@ en:
         finish: Finish Course
         hide: Hide
         start: Start Course
+      update:
+        danger: Cannot edit course now.
     courses_subjects:
       edit:
         danger: Cannot edit subjcet now.

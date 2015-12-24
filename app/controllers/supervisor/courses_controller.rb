@@ -1,7 +1,7 @@
 class Supervisor::CoursesController < ApplicationController
   before_action :authenticate_user!
   before_action :load_course, except: [:index, :new, :create]
-  before_action :check_course, only: [:edit, :update, :destroy]
+  before_action :check_course, only: [:update, :destroy]
   load_and_authorize_resource except: [:new, :create]
 
   def index
@@ -15,9 +15,9 @@ class Supervisor::CoursesController < ApplicationController
 
   def create
     @course = Course.new course_params
-    if @course.save!
+    if @course.save
       flash[:notice] = t "flash_course_created"
-      redirect_to [:supervisor, @course]
+      redirect_to supervisor_course_path @course
     else
       render :new
     end
@@ -33,9 +33,9 @@ class Supervisor::CoursesController < ApplicationController
   def update
     if course_params.has_key? :update_status
       @course.update_status!
-      redirect_to [:supervisor, @course]
+      redirect_to supervisor_course_path @course
     elsif @course.update_attributes course_params
-      redirect_to [:supervisor, @course]
+      redirect_to supervisor_course_path @course
     else
       render :edit
     end
@@ -58,7 +58,7 @@ class Supervisor::CoursesController < ApplicationController
   end  
 
   def check_course
-    if valid_for_status_update? course_params.has_key?(:update_status)
+    if @course.invalid_for_update? course_params.has_key?(:update_status)
       flash[:danger] = t ".danger"
       redirect_to supervisor_courses_path
     end
