@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-  load_and_authorize_resource except: [:show]
+  load_and_authorize_resource
 
   def show
     @course = current_user.courses.last
