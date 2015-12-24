@@ -15,4 +15,15 @@ describe UsersController do
       expect(assigns(:users)).to include user
     end
   end
+
+  describe "GET #show" do
+    context "Get Show successfully" do
+      it {expect(response).to be_success}
+      it {expect(response).to have_http_status :ok}
+      it "renders the :show template" do
+        get :show, id: user
+        expect(response).to render_template :show
+      end
+    end
+  end
 end
