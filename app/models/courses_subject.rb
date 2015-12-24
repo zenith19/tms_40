@@ -1,10 +1,7 @@
 class CoursesSubject < ActiveRecord::Base
   acts_as_paranoid
-  STATUS = {
-    new: 0,
-    started: 1,
-    finished: 2
-  }
+
+  enum status: [:created, :started, :finished]
 
   attr_accessor :update_status
 
@@ -14,16 +11,4 @@ class CoursesSubject < ActiveRecord::Base
   has_many :users, through: :users_subjects
   has_many :courses_subjects_tasks, dependent: :destroy
   has_many :tasks, through: :courses_subjects_tasks
-
-  def new?
-    status == STATUS[:new]
-  end
-
-  def started?
-    status == STATUS[:started]
-  end
-
-  def finished?
-    status == STATUS[:finished]
-  end
 end

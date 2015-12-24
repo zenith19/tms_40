@@ -3,11 +3,6 @@ class UsersCourse < ActiveRecord::Base
   tracked owner: ->(controller, model) {controller && controller.current_user}
   acts_as_paranoid
 
-  ASSIGN_TYPE = {
-    supervisor: "supervisor",
-    trainee: "trainee"
-  }
-
   after_create :appened_assigned_users
   after_destroy :appened_removed_users
 
