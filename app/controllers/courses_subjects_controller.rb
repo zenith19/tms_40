@@ -3,7 +3,6 @@ class CoursesSubjectsController < ApplicationController
 
   def edit
     @courses_subject = CoursesSubject.find params[:id]
-    @user_subject = @courses_subject.users_subjects.find_by(user: current_user).
-      first
+    @user_subject = @courses_subject.users_subjects.find_by user: current_user
   end
 end
