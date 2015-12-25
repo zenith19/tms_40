@@ -2,7 +2,7 @@ class Supervisor::CoursesController < ApplicationController
   before_action :authenticate_user!
   before_action :load_course, except: [:index, :new, :create]
   before_action :check_course, only: [:update, :destroy]
-  load_and_authorize_resource except: [:new, :create]
+  load_and_authorize_resource except: [:index, :new, :create]
 
   def index
     @search = current_user.courses.search params[:q]
