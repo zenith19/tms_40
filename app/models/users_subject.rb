@@ -7,7 +7,6 @@ class UsersSubject < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :courses_subject
-  belongs_to :subject
 
   class << self
     def find_by_user user_id

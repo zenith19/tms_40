@@ -1,14 +1,17 @@
 <h1><%= @course.name %></h1>
-<%= form_for [:supervisor, @course] do |f| %>
-  <%= f.hidden_field :update_status %>
   <% if can? :manage, @course %>
     <% if @course.created? %>
-      <%= f.submit t(".start"), class: "btn btn-primary" %>
+      <%= form_for [:supervisor, @course] do |f| %>
+        <%= f.hidden_field :update_status %>
+        <%= f.submit t(".start"), class: "btn btn-primary" %>
+      <% end %>
     <% elsif @course.started? %>
-      <%= f.submit t(".finish"), class: "btn btn-primary" %>
+      <%= form_for [:supervisor, @course] do |f| %>
+        <%= f.hidden_field :update_status %>
+        <%= f.submit t(".finish"), class: "btn btn-primary" %>
+      <% end %>
     <% end %>
   <% end %>
-<% end %>
 <p><%= @course.description %></p>
 <h3>
   <%= t '.all_trainees' %>
@@ -43,7 +46,7 @@
             id: courses_subject.id) %>
         </div>
         <div class="col-xs-1">
-          <%= CoursesSubject::STATUS.key(courses_subject.status).upcase %>
+          <%= courses_subject.status.upcase %>
         </div>
       </li>
     </div>
@@ -52,15 +55,15 @@
 <br>
 <h3><%= t "activity_log" %></h3>
 <table class="table">
-  <% @activities.each do |activity| %>
+  <% @activities.each do |activity| %>  
   <tr>
     <td>
       <b class="text-capitalize"><%= @course.name %></b>
       <% key = activity.key %>
       <%= key[7,key.length] << "d by" %>
-      <%= link_to activity.owner.first_name %>
+      <%= activity.owner.full_name %>
       <%= time_ago_in_words(activity.created_at).gsub('about','') %>
-      <%= t "ago" %>
+      <%= t :ago %>
     </td>
   </tr>
   <% end %>

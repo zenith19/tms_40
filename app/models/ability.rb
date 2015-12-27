@@ -7,7 +7,6 @@ class Ability
       can :manage, Course do |course|
         course.users.include? user
       end
-      can :read, Course
     else
       can :show, Course do |course|
         course.users.include? user
