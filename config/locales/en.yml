@@ -114,6 +114,7 @@ en:
         start: Start Course
       update:
         danger: Cannot edit course now.
+        success: Course Successfully %{action}
     courses_subjects:
       edit:
         danger: Cannot edit subjcet now.

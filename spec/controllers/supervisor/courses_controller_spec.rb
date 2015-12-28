@@ -124,12 +124,28 @@ describe Supervisor::CoursesController do
 
       context "when request is to start or finish the course" do
         before do
-          allow(course).to receive(:update_status!)
-          put :update, {id: english, course: {name: "bengali", update_status: 
-              ""}} 
+          allow(course).to receive :update_status!
+          allow(course).to receive(:created?).and_return true
+        end
+        context "when course start" do
+          before {put :update, {id: english, course: {name: "bengali", 
+            update_status: ""}}}
+          it {expect(flash[:success]).to eq I18n.t(
+            "supervisor.courses.update.success", action: "Started")}
+          it {expect(response).to redirect_to supervisor_course_path course}
+        end
+        context "when course finish" do
+          before do
+            allow(course).to receive(:created?).and_return false
+            put :update, {id: english, course: {name: "bengali", update_status: 
+              ""}}            
+          end
+          it {expect(flash[:success]).to eq I18n.t(
+            "supervisor.courses.update.success", action: "Finished")}
+          it {expect(response).to redirect_to supervisor_course_path course}
         end
 
-        it {expect(response).to redirect_to supervisor_course_path course}
+        
       end
     end
     context "while course failed .check_course" do
