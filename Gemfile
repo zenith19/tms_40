@@ -62,7 +62,11 @@ end
 
 group :test do
   gem "capybara"
+  # gem "capybara-webkit"
   gem "guard-rspec"
   gem "launchy"
   gem "shoulda"
+  gem "selenium-webdriver"
+  gem "database_cleaner"
+  gem "capybara-bootstrap-datepicker"
 end
