@@ -26,4 +26,22 @@ describe UsersController do
       end
     end
   end
+
+  describe "PUT #update" do
+    before {allow(User).to receive(:find).and_return user}
+    context "succesful update" do
+      before do
+        allow(user).to receive(:update_attributes).and_return true
+        put :update, {id: user, user: {name: "Test1"}}
+      end
+      it {expect(response).to redirect_to edit_courses_subject_path}
+    end
+    context "update failure" do
+      before do
+        allow(user).to receive(:update_attributes).and_return false
+        put :update, {id: user, user: {name: "Test1"}}
+      end
+      it {expect(response).to render_template "courses_subjects/edit"}
+    end
+  end
 end

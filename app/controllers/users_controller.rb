@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     if @user.update_attributes user_params
       redirect_to edit_courses_subject_path
     else
-      render "courses_subject/edit"
+      render "courses_subjects/edit"
     end
   end
 
