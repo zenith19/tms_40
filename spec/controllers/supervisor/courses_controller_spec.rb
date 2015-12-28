@@ -111,7 +111,6 @@ describe Supervisor::CoursesController do
         context "when the course updated successfully" do
           it {expect(response).to redirect_to supervisor_course_path course}
         end
-
         context "when the course failed to update" do
           before do
             allow(course).to receive(:update_attributes).and_return false
@@ -121,11 +120,10 @@ describe Supervisor::CoursesController do
           it {expect(response).to render_template :edit}
         end
       end
-
       context "when request is to start or finish the course" do
         before do
           allow(course).to receive :update_status!
-          allow(course).to receive(:created?).and_return true
+          allow(course).to receive(:started?).and_return true
         end
         context "when course start" do
           before {put :update, {id: english, course: {name: "bengali", 
@@ -136,7 +134,7 @@ describe Supervisor::CoursesController do
         end
         context "when course finish" do
           before do
-            allow(course).to receive(:created?).and_return false
+            allow(course).to receive(:started?).and_return false
             put :update, {id: english, course: {name: "bengali", update_status: 
               ""}}            
           end
@@ -144,8 +142,6 @@ describe Supervisor::CoursesController do
             "supervisor.courses.update.success", action: "Finished")}
           it {expect(response).to redirect_to supervisor_course_path course}
         end
-
-        
       end
     end
     context "while course failed .check_course" do

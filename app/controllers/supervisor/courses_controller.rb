@@ -33,7 +33,7 @@ class Supervisor::CoursesController < ApplicationController
   def update
     if course_params.has_key? :update_status
       @course.update_status!
-      if @course.created?
+      if @course.started?
         flash[:success] = t ".success", action: "Started"
       else
         flash[:success] = t ".success", action: "Finished"
