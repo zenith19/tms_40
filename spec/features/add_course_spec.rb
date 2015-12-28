@@ -4,7 +4,7 @@ feature "Add course" do
   subject {page}
   let(:supervisor) {FactoryGirl.create :supervisor}
   let!(:demo_subject){FactoryGirl.create :subject}
-  before :each do    
+  before :each do
     login_as supervisor, scope: :user
     visit new_supervisor_course_path
   end
@@ -25,8 +25,9 @@ feature "Add course" do
     is_expected.to have_field "course[end_date]", type: "date"
   end
   scenario "has subject field" do
-    is_expected.to have_field "course_subject_ids_#{demo_subject.id}", type: "checkbox"
-    is_expected.to have_field "course[subject_ids][]", type: "checkbox"
+    Subject.ids.each do |id|
+      is_expected.to have_unchecked_field "course_subject_ids_#{id}"
+    end
   end
   scenario "has submit button" do
     is_expected.to have_button I18n.t "supervisor.courses.new.bt_new_course"

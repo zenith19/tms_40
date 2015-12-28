@@ -1,3 +1,5 @@
-<li><%= link_to t('view_all_trainee'), supervisor_users_path(supervisor: User::TYPES[:trainee]) %></li>
-<li><%= link_to t('view_all_supervisors'), supervisor_users_path(supervisor: User::TYPES[:supervisor]) %></li>
+<li><%= link_to t("view_all_trainee"), supervisor_users_path(
+  supervisor: User.roles[:trainee]) %></li>
+<li><%= link_to t("view_all_supervisors"), supervisor_users_path(supervisor: 
+  User.roles[:supervisor]) %></li>
 <li><%= link_to t(:log_out), :destroy_user_session, method: :delete %></li>

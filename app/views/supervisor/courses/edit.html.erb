@@ -12,11 +12,13 @@
       </div>
       <div class="form-group">
         <%= f.label :start_date %>
-        <%= f.date_field :start_date, class: "datepicker", id: "sd", readonly: true %>
+        <%= f.date_field :start_date, id: "sd", readonly: true, value: 
+          @course.start_date.strftime("%d/%m/%Y") %>
       </div>
       <div class="form-group">
         <%= f.label :end_date %>
-        <%= f.date_field :end_date, class: "datepicker", id: "ed", readonly: true %>
+        <%= f.date_field :end_date, id: "ed", readonly: true, value: 
+          @course.end_date.strftime("%d/%m/%Y") %>
       </div>
       <div class="form-group">
         <%= collection_check_boxes :course, :subject_ids,Subject.all, :id, :name do |b| %>

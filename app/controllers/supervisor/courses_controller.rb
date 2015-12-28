@@ -33,8 +33,14 @@ class Supervisor::CoursesController < ApplicationController
   def update
     if course_params.has_key? :update_status
       @course.update_status!
+      if @course.created?
+        flash[:success] = t ".success", action: "Started"
+      else
+        flash[:success] = t ".success", action: "Finished"
+      end
       redirect_to supervisor_course_path @course
     elsif @course.update_attributes course_params
+      flash[:success] = t ".success", action: "Updated"
       redirect_to supervisor_course_path @course
     else
       render :edit
