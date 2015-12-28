@@ -60,7 +60,7 @@ describe Supervisor::SubjectsController do
   end
 
   describe "GET edit" do
-    let(:subject){Subject.first}
+    let(:subject){FactoryGirl.create :subject}
     before do
       allow(Subject).to receive(:find).and_return subject
       get :edit, id: subject.id
@@ -72,7 +72,7 @@ describe Supervisor::SubjectsController do
   end
 
   describe "POST update" do
-    let(:subject){Subject.first}
+    let(:subject){FactoryGirl.create :subject}
     before do
       allow(Subject).to receive(:find).and_return subject
       allow(subject).to receive(:update_attributes).and_return true
@@ -91,6 +91,27 @@ describe Supervisor::SubjectsController do
         put :update, {id: subject, subject: {name: "Subject1"}}
       end
       it {expect(response).to render_template :edit}
+    end
+  end
+
+  describe "DELETE destroy" do
+    let(:subject){FactoryGirl.create :subject}
+    before {delete :destroy, id: subject.id}
+    context "success" do
+      it {expect(response).to have_http_status 302}
+      it {expect(response).to redirect_to supervisor_subjects_path}
+    end
+  end
+
+  describe "GET show" do
+    let(:subject){FactoryGirl.create :subject}
+    let(:tasks) {Task.all}
+    before do
+      allow(subject).to receive(:tasks).and_return tasks
+      get :show, id: subject.id
+    end
+    context "should show subject details" do
+      it {expect(response).to render_template :show}
     end
   end
 end
