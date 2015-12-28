@@ -1,7 +1,8 @@
 class Supervisor::CoursesController < ApplicationController
   before_action :authenticate_user!
   before_action :load_course, except: [:index, :new, :create]
-  before_action :check_course, only: [:update, :destroy]
+  before_action :check_course_before_update, only: :update
+  before_action :check_course_before_destroy, only: :destroy
   load_and_authorize_resource only: [:edit, :update, :destroy]
 
   def index
@@ -63,8 +64,15 @@ class Supervisor::CoursesController < ApplicationController
       :update_status, subject_ids: []
   end  
 
-  def check_course
+  def check_course_before_update
     if @course.invalid_for_update? course_params.has_key?(:update_status)
+      flash[:danger] = t ".danger"
+      redirect_to supervisor_courses_path
+    end
+  end
+
+  def check_course_before_destroy
+    unless @course.finished?
       flash[:danger] = t ".danger"
       redirect_to supervisor_courses_path
     end

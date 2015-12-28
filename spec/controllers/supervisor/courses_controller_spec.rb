@@ -158,7 +158,10 @@ describe Supervisor::CoursesController do
   describe "DELETE destroy" do
     let!(:num_of_courses) {Course.count}
 
-    before {delete :destroy, {id: english, course: english.attributes}}
+    before do
+      english.finished!
+      delete :destroy, {id: english, course: english.attributes}
+    end
 
     context "delete successfully" do
       it {expect(response).to have_http_status 302}

@@ -89,6 +89,7 @@ en:
         edit: Edit
       destroy:
         course_delete: Successfully Deleted
+        danger: Cannot delet this course. Course is not finished yet.
       edit:
         danger: Cannot edit course now.
         submit: Update Course
