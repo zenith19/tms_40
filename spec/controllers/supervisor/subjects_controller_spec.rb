@@ -58,4 +58,39 @@ describe Supervisor::SubjectsController do
       it {expect(response).to render_template :new}
     end
   end
+
+  describe "GET edit" do
+    let(:subject){Subject.first}
+    before do
+      allow(Subject).to receive(:find).and_return subject
+      get :edit, id: subject.id
+    end
+
+    it {expect(response).to be_success}
+    it {expect(response).to have_http_status :ok}
+    it {expect(response).to render_template :edit}
+  end
+
+  describe "POST update" do
+    let(:subject){Subject.first}
+    before do
+      allow(Subject).to receive(:find).and_return subject
+      allow(subject).to receive(:update_attributes).and_return true
+      put :update, {id: subject, subject: {name: "Subject1"}}
+    end
+
+    it {expect(assigns :subject).to be subject}
+
+    context "with valid attributes update the subject" do
+      it {expect(response).to redirect_to supervisor_subjects_path}
+    end
+
+    context "with invalid attributes" do
+      before do
+        allow(subject).to receive(:update_attributes).and_return false
+        put :update, {id: subject, subject: {name: "Subject1"}}
+      end
+      it {expect(response).to render_template :edit}
+    end
+  end
 end
