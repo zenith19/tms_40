@@ -8,7 +8,7 @@ describe "users/index.html.erb" do
   before do
     FactoryGirl.create :user
     users.each do |user|
-      allow(user).to receive(:to_partial_path).and_return("index")
+      allow(user).to receive(:to_partial_path).and_return "index"
     end
     assign :search, search
     assign :users, users
@@ -53,6 +53,4 @@ describe "users/index.html.erb" do
     it {expect(controller.request.path_parameters[:controller]).to eq("users")}
     it {expect(controller.request.path_parameters[:action]).to eq "index"}
   end
-
-
 end
